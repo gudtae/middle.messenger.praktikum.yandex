@@ -1,0 +1,18 @@
+.input.changeProfile {
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+}
+.profile_img{
+    display: flex;
+    justify-content: center;;
+}
+.btn_save{
+    background-color: $button-color;
+    color: #fff;
+    width: 50%;
+    height: calc(2rem + 2px);
+    align-self: center;
+    border-radius: 0.25rem;
+}
