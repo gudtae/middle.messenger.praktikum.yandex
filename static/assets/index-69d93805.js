@@ -20,55 +20,55 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":F="Parse error on
         return undefined
     }
     `.trim()},blockValue:function(a){var n=this.aliasable("container.hooks.blockHelperMissing"),g=[this.contextName(0)];this.setupHelperArgs(a,0,g);var m=this.popStack();g.splice(1,0,m),this.push(this.source.functionCall(n,"call",g))},ambiguousBlockValue:function(){var a=this.aliasable("container.hooks.blockHelperMissing"),n=[this.contextName(0)];this.setupHelperArgs("",0,n,!0),this.flushInline();var g=this.topStack();n.splice(1,0,g),this.pushSource(["if (!",this.lastHelper,") { ",g," = ",this.source.functionCall(a,"call",n),"}"])},appendContent:function(a){this.pendingContent?a=this.pendingContent+a:this.pendingLocation=this.source.currentLocation,this.pendingContent=a},append:function(){if(this.isInline())this.replaceStack(function(n){return[" != null ? ",n,' : ""']}),this.pushSource(this.appendToBuffer(this.popStack()));else{var a=this.popStack();this.pushSource(["if (",a," != null) { ",this.appendToBuffer(a,void 0,!0)," }"]),this.environment.isSimple&&this.pushSource(["else { ",this.appendToBuffer("''",void 0,!0)," }"])}},appendEscaped:function(){this.pushSource(this.appendToBuffer([this.aliasable("container.escapeExpression"),"(",this.popStack(),")"]))},getContext:function(a){this.lastContext=a},pushContext:function(){this.pushStackLiteral(this.contextName(this.lastContext))},lookupOnContext:function(a,n,g,m){var S=0;!m&&this.options.compat&&!this.lastContext?this.push(this.depthedLookup(a[S++])):this.pushContext(),this.resolvePath("context",a,S,n,g)},lookupBlockParam:function(a,n){this.useBlockParams=!0,this.push(["blockParams[",a[0],"][",a[1],"]"]),this.resolvePath("context",n,1)},lookupData:function(a,n,g){a?this.pushStackLiteral("container.data(data, "+a+")"):this.pushStackLiteral("data"),this.resolvePath("data",n,0,!0,g)},resolvePath:function(a,n,g,m,S){var _=this;if(this.options.strict||this.options.assumeObjects){this.push(d(this.options.strict&&S,this,n,a));return}for(var k=n.length;g<k;g++)this.replaceStack(function(v){var y=_.nameLookup(v,n[g],a);return m?[" && ",y]:[" != null ? ",y," : ",v]})},resolvePossibleLambda:function(){this.push([this.aliasable("container.lambda"),"(",this.popStack(),", ",this.contextName(0),")"])},pushStringParam:function(a,n){this.pushContext(),this.pushString(n),n!=="SubExpression"&&(typeof a=="string"?this.pushString(a):this.pushStackLiteral(a))},emptyHash:function(a){this.trackIds&&this.push("{}"),this.stringParams&&(this.push("{}"),this.push("{}")),this.pushStackLiteral(a?"undefined":"{}")},pushHash:function(){this.hash&&this.hashes.push(this.hash),this.hash={values:{},types:[],contexts:[],ids:[]}},popHash:function(){var a=this.hash;this.hash=this.hashes.pop(),this.trackIds&&this.push(this.objectLiteral(a.ids)),this.stringParams&&(this.push(this.objectLiteral(a.contexts)),this.push(this.objectLiteral(a.types))),this.push(this.objectLiteral(a.values))},pushString:function(a){this.pushStackLiteral(this.quotedString(a))},pushLiteral:function(a){this.pushStackLiteral(a)},pushProgram:function(a){a!=null?this.pushStackLiteral(this.programExpression(a)):this.pushStackLiteral(null)},registerDecorator:function(a,n){var g=this.nameLookup("decorators",n,"decorator"),m=this.setupHelperArgs(n,a);this.decorators.push(["fn = ",this.decorators.functionCall(g,"",["fn","props","container",m])," || fn;"])},invokeHelper:function(a,n,g){var m=this.popStack(),S=this.setupHelper(a,n),_=[];g&&_.push(S.name),_.push(m),this.options.strict||_.push(this.aliasable("container.hooks.helperMissing"));var k=["(",this.itemsSeparatedBy(_,"||"),")"],v=this.source.functionCall(k,"call",S.callParams);this.push(v)},itemsSeparatedBy:function(a,n){var g=[];g.push(a[0]);for(var m=1;m<a.length;m++)g.push(n,a[m]);return g},invokeKnownHelper:function(a,n){var g=this.setupHelper(a,n);this.push(this.source.functionCall(g.name,"call",g.callParams))},invokeAmbiguous:function(a,n){this.useRegister("helper");var g=this.popStack();this.emptyHash();var m=this.setupHelper(0,a,n),S=this.lastHelper=this.nameLookup("helpers",a,"helper"),_=["(","(helper = ",S," || ",g,")"];this.options.strict||(_[0]="(helper = ",_.push(" != null ? helper : ",this.aliasable("container.hooks.helperMissing"))),this.push(["(",_,m.paramsInit?["),(",m.paramsInit]:[],"),","(typeof helper === ",this.aliasable('"function"')," ? ",this.source.functionCall("helper","call",m.callParams)," : helper))"])},invokePartial:function(a,n,g){var m=[],S=this.setupParams(n,1,m);a&&(n=this.popStack(),delete S.name),g&&(S.indent=JSON.stringify(g)),S.helpers="helpers",S.partials="partials",S.decorators="container.decorators",a?m.unshift(n):m.unshift(this.nameLookup("partials",n,"partial")),this.options.compat&&(S.depths="depths"),S=this.objectLiteral(S),m.push(S),this.push(this.source.functionCall("container.invokePartial","",m))},assignToHash:function(a){var n=this.popStack(),g=void 0,m=void 0,S=void 0;this.trackIds&&(S=this.popStack()),this.stringParams&&(m=this.popStack(),g=this.popStack());var _=this.hash;g&&(_.contexts[a]=g),m&&(_.types[a]=m),S&&(_.ids[a]=S),_.values[a]=n},pushId:function(a,n,g){a==="BlockParam"?this.pushStackLiteral("blockParams["+n[0]+"].path["+n[1]+"]"+(g?" + "+JSON.stringify("."+g):"")):a==="PathExpression"?this.pushString(n):a==="SubExpression"?this.pushStackLiteral("true"):this.pushStackLiteral("null")},compiler:s,compileChildren:function(a,n){for(var g=a.children,m=void 0,S=void 0,_=0,k=g.length;_<k;_++){m=g[_],S=new this.compiler;var v=this.matchExistingProgram(m);if(v==null){this.context.programs.push("");var y=this.context.programs.length;m.index=y,m.name="program"+y,this.context.programs[y]=S.compile(m,n,this.context,!this.precompile),this.context.decorators[y]=S.decorators,this.context.environments[y]=m,this.useDepths=this.useDepths||S.useDepths,this.useBlockParams=this.useBlockParams||S.useBlockParams,m.useDepths=this.useDepths,m.useBlockParams=this.useBlockParams}else m.index=v.index,m.name="program"+v.index,this.useDepths=this.useDepths||v.useDepths,this.useBlockParams=this.useBlockParams||v.useBlockParams}},matchExistingProgram:function(a){for(var n=0,g=this.context.environments.length;n<g;n++){var m=this.context.environments[n];if(m&&m.equals(a))return m}},programExpression:function(a){var n=this.environment.children[a],g=[n.index,"data",n.blockParams];return(this.useBlockParams||this.useDepths)&&g.push("blockParams"),this.useDepths&&g.push("depths"),"container.program("+g.join(", ")+")"},useRegister:function(a){this.registers[a]||(this.registers[a]=!0,this.registers.list.push(a))},push:function(a){return a instanceof l||(a=this.source.wrap(a)),this.inlineStack.push(a),a},pushStackLiteral:function(a){this.push(new l(a))},pushSource:function(a){this.pendingContent&&(this.source.push(this.appendToBuffer(this.source.quotedString(this.pendingContent),this.pendingLocation)),this.pendingContent=void 0),a&&this.source.push(a)},replaceStack:function(a){var n=["("],g=void 0,m=void 0,S=void 0;if(!this.isInline())throw new h.default("replaceStack on non-inline");var _=this.popStack(!0);if(_ instanceof l)g=[_.value],n=["(",g],S=!0;else{m=!0;var k=this.incrStack();n=["((",this.push(k)," = ",_,")"],g=this.topStack()}var v=a.call(this,g);S||this.popStack(),m&&this.stackSlot--,this.push(n.concat(v,")"))},incrStack:function(){return this.stackSlot++,this.stackSlot>this.stackVars.length&&this.stackVars.push("stack"+this.stackSlot),this.topStackName()},topStackName:function(){return"stack"+this.stackSlot},flushInline:function(){var a=this.inlineStack;this.inlineStack=[];for(var n=0,g=a.length;n<g;n++){var m=a[n];if(m instanceof l)this.compileStack.push(m);else{var S=this.incrStack();this.pushSource([S," = ",m,";"]),this.compileStack.push(S)}}},isInline:function(){return this.inlineStack.length},popStack:function(a){var n=this.isInline(),g=(n?this.inlineStack:this.compileStack).pop();if(!a&&g instanceof l)return g.value;if(!n){if(!this.stackSlot)throw new h.default("Invalid stack pop");this.stackSlot--}return g},topStack:function(){var a=this.isInline()?this.inlineStack:this.compileStack,n=a[a.length-1];return n instanceof l?n.value:n},contextName:function(a){return this.useDepths&&a?"depths["+a+"]":"depth"+a},quotedString:function(a){return this.source.quotedString(a)},objectLiteral:function(a){return this.source.objectLiteral(a)},aliasable:function(a){var n=this.aliases[a];return n?(n.referenceCount++,n):(n=this.aliases[a]=this.source.wrap(a),n.aliasable=!0,n.referenceCount=1,n)},setupHelper:function(a,n,g){var m=[],S=this.setupHelperArgs(n,a,m,g),_=this.nameLookup("helpers",n,"helper"),k=this.aliasable(this.contextName(0)+" != null ? "+this.contextName(0)+" : (container.nullContext || {})");return{params:m,paramsInit:S,name:_,callParams:[k].concat(m)}},setupParams:function(a,n,g){var m={},S=[],_=[],k=[],v=!g,y=void 0;v&&(g=[]),m.name=this.quotedString(a),m.hash=this.popStack(),this.trackIds&&(m.hashIds=this.popStack()),this.stringParams&&(m.hashTypes=this.popStack(),m.hashContexts=this.popStack());var P=this.popStack(),b=this.popStack();(b||P)&&(m.fn=b||"container.noop",m.inverse=P||"container.noop");for(var C=n;C--;)y=this.popStack(),g[C]=y,this.trackIds&&(k[C]=this.popStack()),this.stringParams&&(_[C]=this.popStack(),S[C]=this.popStack());return v&&(m.args=this.source.generateArray(g)),this.trackIds&&(m.ids=this.source.generateArray(k)),this.stringParams&&(m.types=this.source.generateArray(_),m.contexts=this.source.generateArray(S)),this.options.data&&(m.data="data"),this.useBlockParams&&(m.blockParams="blockParams"),m},setupHelperArgs:function(a,n,g,m){var S=this.setupParams(a,n,g);return S.loc=JSON.stringify(this.source.currentLocation),S=this.objectLiteral(S),m?(this.useRegister("options"),g.push("options"),["options=",S]):g?(g.push(S),""):S}},function(){for(var r="break else new var case finally return void catch for switch while continue function this with default if throw delete in try do instanceof typeof abstract enum int short boolean export interface static byte extends long super char final native synchronized class float package throws const goto private transient debugger implements protected volatile double import public let yield await null true false".split(" "),a=s.RESERVED_WORDS={},n=0,g=r.length;n<g;n++)a[r[n]]=!0}(),s.isValidJavaScriptVariableName=function(r){return!s.RESERVED_WORDS[r]&&/^[a-zA-Z_$][0-9a-zA-Z_$]*$/.test(r)};function d(r,a,n,g){var m=a.popStack(),S=0,_=n.length;for(r&&_--;S<_;S++)m=a.nameLookup(m,n[S],g);return r?[a.aliasable("container.strict"),"(",m,", ",a.quotedString(n[S]),", ",JSON.stringify(a.source.currentLocation)," )"]:m}t.default=s,e.exports=t.default})(Te,Te.exports);var En=Te.exports;(function(e,t){t.__esModule=!0;function o(_){return _&&_.__esModule?_:{default:_}}var p=Wr,f=o(p),h=vt,c=o(h),u=Z,i=j,l=En,s=o(l),d=_t,r=o(d),a=mt,n=o(a),g=f.default.create;function m(){var _=g();return _.compile=function(k,v){return i.compile(k,v,_)},_.precompile=function(k,v){return i.precompile(k,v,_)},_.AST=c.default,_.Compiler=i.Compiler,_.JavaScriptCompiler=s.default,_.Parser=u.parser,_.parse=u.parse,_.parseWithoutProcessing=u.parseWithoutProcessing,_}var S=m();S.create=m,n.default(S),S.Visitor=r.default,S.default=S,t.default=S,e.exports=t.default})(me,me.exports);var xn=me.exports;const D=Lt(xn),Mn=`
-<main class="log-sign-in">
-<section class="wrapper">
-    <p>Вход</p>
-    <label for="login">
-        <p class="label">Логин</p> 
-        <input type="text" id="login" name="login" class="input">
-    </label>
-    <label for="password">
-        <p class="label">Пароль</p>
-        <input type="password" id="password" name="password" class="input">
-    </label>
-    <a href="/chat" class="btn">войти</a>
-    <a href="/signin" class="link">нет аккаунта?</a>
-</section>
+<main class="login_signin">
+    <form class="wrapper">
+        <p>Вход</p>
+        <label for="login">
+            <p class="label">Логин</p>
+            <input type="text" id="login" name="login" class="input">
+        </label>
+        <label for="password">
+            <p class="label">Пароль</p>
+            <input type="password" id="password" name="password" class="input">
+        </label>
+        <a href="/chat" class="btn">войти</a>
+        <a href="/signin" class="link">нет аккаунта?</a>
+    </form>
 </main>`,On=`
-<main class="log-sign-in">
-<section class="wrapper wrapper_signin">
-    <p>Регистрация</p>
-    <label for="email">
-        <p class="label">Почта</p> 
-        <input type="email" id="email" name="email" class="input">
-    </label>
-    <label for="login">
-        <p class="label">Логин</p> 
-        <input type="text" id="login" name="login" class="input">
-    </label>
-    <label for="first_name">
-        <p class="label">Имя</p>
-        <input type="text" id="first_name" name="first_name" class="input">
-    </label>
-    <label for="second_name">
-        <p class="label">Фамилия</p>
-        <input type="text" id="second_name" name="second_name" class="input">
-    </label>
-    <label for="phone">
-        <p class="label">Телефон</p>
-        <input type="tel" id="phone" name="phone" class="input">
-    </label>
-    <label for="password">
-        <p class="label">Пароль</p>
-        <input type="password" id="password" name="password" class="input">
-    </label>
-    <label for="passwordAgain">
-        <p class="label">Пароль (введите еще раз)</p>
-        <input type="password" id="passwordAgain" name="password" class="input">
-    </label>
-    <a href="/chat" class="btn">создать аккаунта</a>
-    <a href="/" class="link">уже есть аккаунт?</a>
-</section>
+<main class="login_signin">
+    <form class="wrapper wrapper_signin">
+        <p>Регистрация</p>
+        <label for="email">
+            <p class="label">Почта</p>
+            <input type="email" id="email" name="email" class="input">
+        </label>
+        <label for="login">
+            <p class="label">Логин</p>
+            <input type="text" id="login" name="login" class="input">
+        </label>
+        <label for="first_name">
+            <p class="label">Имя</p>
+            <input type="text" id="first_name" name="first_name" class="input">
+        </label>
+        <label for="second_name">
+            <p class="label">Фамилия</p>
+            <input type="text" id="second_name" name="second_name" class="input">
+        </label>
+        <label for="phone">
+            <p class="label">Телефон</p>
+            <input type="tel" id="phone" name="phone" class="input">
+        </label>
+        <label for="password">
+            <p class="label">Пароль</p>
+            <input type="password" id="password" name="password" class="input">
+        </label>
+        <label for="passwordAgain">
+            <p class="label">Пароль (введите еще раз)</p>
+            <input type="password" id="passwordAgain" name="password" class="input">
+        </label>
+        <a href="/chat" class="btn">создать аккаунта</a>
+        <a href="/" class="link">уже есть аккаунт?</a>
+    </form>
 </main>`,ze="/assets/backToChat-2bc24a64.svg",Y="/assets/profileIcon-4a3e28a6.svg",An=`
 <main class="profile_layout">
     <aside class="profile_aside">
@@ -79,12 +79,24 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":F="Parse error on
         <img src="${Y}" alt="Иконка пользователя" width="100px">
         <p>{{display_name}}</p>
         <ul class="profile_user_data">
-            <li class="profile_user_flex"><span>Почта</span> <span class="light_color">{{email}}</span></li>
-            <li class="profile_user_flex"> <span>Логин</span> <span class="light_color">{{login}}</span></li>
-            <li class="profile_user_flex"><span>Имя</span> <span class="light_color">{{first_name}}</span></li>
-            <li class="profile_user_flex"><span>Фамилия</span> <span class="light_color">{{second_name}}</span></li>
-            <li class="profile_user_flex"><span>Имя в чате</span> <span class="light_color">{{display_name}}</span></li>
-            <li class="profile_user_flex"><span>Телефон</span> <span class="light_color">{{phone}}</span></li>
+            <li class="profile_user_flex">
+                <span>Почта</span> <span class="light_color">{{email}}</span>
+            </li>
+            <li class="profile_user_flex">
+                <span>Логин</span> <span class="light_color">{{login}}</span>
+            </li>
+            <li class="profile_user_flex">
+                <span>Имя</span> <span class="light_color">{{first_name}}</span>
+            </li>
+            <li class="profile_user_flex">
+                <span>Фамилия</span> <span class="light_color">{{second_name}}</span>
+            </li>
+            <li class="profile_user_flex">
+                <span>Имя в чате</span> <span class="light_color">{{display_name}}</span>
+            </li>
+            <li class="profile_user_flex">
+                <span>Телефон</span> <span class="light_color">{{phone}}</span>
+            </li>
         </ul>
         <div class="profile_link">
             <a href="/changeProfile" class="link">Изменить данные</a>
@@ -99,64 +111,66 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":F="Parse error on
         <a href="/chat" class="link"><img src="${ze}" alt="Вернуться в чат" width="30px" height="auto">
         </a>
     </aside>
-    <section class="profile_data">
+    <form class="profile_data">
         <div class="profile_img">
-            <input type="image" src="${Y}" alt="Иконка пользователя" width="100px"/>
+            <input type="image" src="${Y}" alt="Иконка пользователя" width="100px" />
         </div>
-            <p>{{display_name}}</p>
+        <p>{{display_name}}</p>
         <div class="profile_user_data">
             <label for="email" class="profile_user_flex">
                 <p>Почта</p>
-                <input type="text" id="email" class="input changeProfile" placeholder={{email}} />
+                <input type="text" name="email" id="email" class="input changeProfile" placeholder={{email}} />
             </label>
             <label for="login" class="profile_user_flex">
                 <p>Логин</p>
-                <input type="text" id="login" class="input changeProfile" placeholder={{login}} />
+                <input type="text" name="login" id="login" class="input changeProfile" placeholder={{login}} />
             </label>
             <label for="first_name" class="profile_user_flex">
                 <p>Имя</p>
-                <input type="text" id="first_" class="input changeProfile" placeholder={{first_name}} />
+                <input type="text" name="first_name" id="first_" class="input changeProfile"
+                    placeholder={{first_name}} />
             </label>
             <label for="second_name" class="profile_user_flex">
                 <p> Фамилия </p>
-                <input type="text" id="second_name" class="input changeProfile" placeholder={{second_name}} />
+                <input type="text" name="second_name" id="second_name" class="input changeProfile"
+                    placeholder={{second_name}} />
             </label>
             <label for="display_name" class="profile_user_flex">
                 <p>Имя в чате</p>
-                <input type="text" id="display_name" class="input changeProfile" placeholder={{display_name}} />
+                <input type="text" name="display_name" id="display_name" class="input changeProfile"
+                    placeholder={{display_name}} />
             </label>
             <label for="phone" class="profile_user_flex">
                 <p>Телефон</p>
-                <input type="phone" id="phone" class="input changeProfile" placeholder={{phone}} />
+                <input type="tel" name="phone" id="phone" class="input changeProfile" placeholder={{phone}} />
             </label>
         </div>
         <button class="btn_save">Сохранить</button>
-        <section>
-<main>
-`,Nn=`
+    </form>
+    <main>
+        `,Nn=`
 <main class="profile_layout">
     <aside class="profile_aside">
         <a href="/chat"><img src=${ze} alt="Вернуться назад" width="30px" height="auto" />
         </a>
-
     </aside>
     <section class="profile_data">
-            <img src=${Y} alt="profilelogo" width="100px" />
+        <img src=${Y} alt="Аватарка пользователя" width="100px" />
         <p>{{display_name}}</p>
-        <div class="profile_user_data">
+        <form class="profile_user_data">
             <label for="old_password" class="profile_user_flex">
                 <p>Старый пароль</p>
-                <input type="password" class="input  changeProfile" name="old_password" id="old_password" placeholder={{password}}/>
+                <input type="password" class="input changeProfile" name="oldPassword" id="old_password" placeholder={{password}}/>
             </label>
             <label for="new_password" class="profile_user_flex">
                 <p>Новый пароль</p>
-                <input type="password" name="new_password" id="new_password" class="input changeProfile" />
+                <input type="password" name="newPassword" id="new_password" class="input changeProfile" />
             </label>
             <label for="repeat_password" class="profile_user_flex">
                 <p>Повторите пароль</p>
-                <input type="password" name="new_password" id="repeat_password" class="input  changeProfile" />
+                <input type="password" name="newPassword" id="repeat_password" class="input changeProfile" />
             </label>
-        </div>
+        </form>
          <button class="btn_save">Сохранить</button>
     </section>
 </main>
@@ -190,15 +204,15 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":F="Parse error on
                 <li><img src=${Y} alt="chat logo" width="30px" /> <span class="bold white">Андрей</span></li>
                 <li class="chat_buttons">
                     <div class="text_color_light fz_small">
-                        <img src="${Rn}" alt="добавить" width="30px">
-                        
+                        <img src="${Rn}" alt="добавить пользователя" width="30px">
+
                     </div>
                     <div class="text_color_light fz_small">
-                        <img src="${Dn}" alt="добавить" width="30px">
-                        
+                        <img src="${Dn}" alt="удалить пользователя" width="30px">
+
                     </div>
                     <div class="text_color_light fz_small">
-                        <img src="${Bn}" alt="добавить" width="30px">
+                        <img src="${Bn}" alt="удалить чат" width="30px">
 
                     </div>
                 </li>
@@ -214,15 +228,16 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":F="Parse error on
 
                 Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не
                 попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-                <span>11.56</span></li>
+                <span>11.56</span>
+            </li>
             <li class="chat_send-to-me"><img src=${qn} alt="картинка"> <span>11.58</span></li>
             <li class="chat_send-by-me">Круто! <span>12.00</span></li>
         </ul>
-        <footer class="chat_footer">
+        <form class="chat_footer">
             <img src=${Hn} alt="Добавить файл" width="30px">
             <input type="text" placeholder="Сообщение" class="chat_search_input right" name="message">
             <input type="image" src=${Tn} class="input_img"></input>
-        </footer>
+        </form>
     </section>
 </main>
 `,Vn=`

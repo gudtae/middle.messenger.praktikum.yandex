@@ -1,5 +1,3 @@
-
-
 export default `
 <main class="error_layout">
     <div class="error_number">500</div>
