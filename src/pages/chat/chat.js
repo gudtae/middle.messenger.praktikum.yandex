@@ -63,11 +63,11 @@ export default `
             <li class="chat_send-to-me"><img src=${img} alt="картинка"> <span>11.58</span></li>
             <li class="chat_send-by-me">Круто! <span>12.00</span></li>
         </ul>
-        <footer class="chat_footer">
+        <form class="chat_footer">
             <img src=${clip} alt="Добавить файл" width="30px">
             <input type="text" placeholder="Сообщение" class="chat_search_input right" name="message">
             <input type="image" src=${send} class="input_img"></input>
-        </footer>
+        </form>
     </section>
 </main>
 `
