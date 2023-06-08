@@ -35,15 +35,15 @@ export default `
                 <li><img src=${profileIcon} alt="chat logo" width="30px" /> <span class="bold white">Андрей</span></li>
                 <li class="chat_buttons">
                     <div class="text_color_light fz_small">
-                        <img src="${addPerson}" alt="добавить" width="30px">
-                        
+                        <img src="${addPerson}" alt="добавить пользователя" width="30px">
+
                     </div>
                     <div class="text_color_light fz_small">
-                        <img src="${deletePerson}" alt="добавить" width="30px">
-                        
+                        <img src="${deletePerson}" alt="удалить пользователя" width="30px">
+
                     </div>
                     <div class="text_color_light fz_small">
-                        <img src="${deleteChat}" alt="добавить" width="30px">
+                        <img src="${deleteChat}" alt="удалить чат" width="30px">
 
                     </div>
                 </li>
@@ -59,7 +59,8 @@ export default `
 
                 Хассельблад в итоге адаптировал SWC для космоса, но что-то пошло не так и на ракету они так никогда и не
                 попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
-                <span>11.56</span></li>
+                <span>11.56</span>
+            </li>
             <li class="chat_send-to-me"><img src=${img} alt="картинка"> <span>11.58</span></li>
             <li class="chat_send-by-me">Круто! <span>12.00</span></li>
         </ul>

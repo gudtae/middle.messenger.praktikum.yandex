@@ -81,7 +81,9 @@ const router = async () => {
     ];
 
     routes.map(route => {
-        if (window.location.pathname == route.path) return route.render()
+        if (window.location.pathname == route.path) {
+            return route.render()
+        }
     });
 
 };

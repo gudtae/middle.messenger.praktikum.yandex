@@ -64,7 +64,7 @@ export const ChatData = [
         last_data: '1990',
         counter: 0,
     }
-]
+];
 export const MessageData = {
     boolean: true,
     data: '12 сентября'
