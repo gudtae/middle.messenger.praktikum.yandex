@@ -4,6 +4,7 @@
 * шаблонизатор Handlebars;
 * SCSS;
 * Eslint;
+* Stylelint;
  
 
 [Использованный шаблон](https://www.figma.com/file/5SdcaCVsZEull9iuLNMdxR/sprint-1?type=design&node-id=0%3A1&t=gijo5ZrRiazu7JcY-1)

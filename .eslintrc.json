@@ -15,7 +15,7 @@
         "@typescript-eslint"
     ],
     "root": true,
-    "ignorePatterns": ["/static/assets/*.js"],
+    // "ignorePatterns": ["/static/assets/*.js"],
     "rules": {
         "indent": [
             "error",

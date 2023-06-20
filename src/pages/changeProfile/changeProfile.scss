@@ -1,13 +1,15 @@
-.input.changeProfile {
+.input.change_profile {
     color: #fff;
     border: none;
     background-color: transparent;
     border-radius: 0;
 }
+
 .profile_img{
     display: flex;
     justify-content: center;;
 }
+
 .btn_save{
     background-color: $button-color;
     color: #fff;

@@ -1,10 +1,10 @@
 @import './normalize';
 @import './variables';
-@import '../pages/login/login.scss';
+@import '../pages/login/login';
 @import '../pages//signin/signin.scss';
-@import '../pages/profile/profile.scss';
-@import '../pages/changeProfile/changeProfile.scss';
-@import '../pages/chat/chat.scss';
+@import '../pages/profile/profile';
+@import '../pages/changeProfile/changeProfile';
+@import '../pages/chat/chat';
 
 
 
@@ -15,18 +15,15 @@ body {
     font-size: 18px;
 }
 
-//добавлены стили для часто используемых элементов
+// добавлены стили для часто используемых элементов
 .btn {
     display: flex;
     align-items: center;
     justify-content: center;
-
     background-color: $button-color;
     color: #fff;
-
     width: 240px;
     height: 40px;
-
     border-radius: 10px;
 }
 
@@ -56,10 +53,8 @@ body {
 .input {
     height: calc(1.5rem + 2px);
     padding: 0.375rem 0.75rem;
-
     font-size: 1rem;
     color: #212529;
-
     border: 1px solid $button-color;
     border-radius: 0.25rem;
 }
@@ -68,9 +63,11 @@ body {
     color: $text-color;
     font-size: 14px;
 }
+
 .light_color{
     color: $light-bg-color;
 }
+
 .bold{
     font-weight: $bold;
 }
@@ -82,6 +79,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #fff;
+
     .error_number{
         font-size: 4rem;
     }

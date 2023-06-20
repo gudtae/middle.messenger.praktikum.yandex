@@ -14,15 +14,15 @@ const template = `
         <form class="profile_user_data">
             <label for="old_password" class="profile_user_flex">
                 <p>Старый пароль</p>
-                <input type="password" class="input changeProfile" name="oldPassword" id="old_password" placeholder={{password}}/>
+                <input type="password" class="input change_profile" name="oldPassword" id="old_password" placeholder={{password}}/>
             </label>
             <label for="new_password" class="profile_user_flex">
                 <p>Новый пароль</p>
-                <input type="password" name="newPassword" id="new_password" class="input changeProfile" />
+                <input type="password" name="newPassword" id="new_password" class="input change_profile" />
             </label>
             <label for="repeat_password" class="profile_user_flex">
                 <p>Повторите пароль</p>
-                <input type="password" name="newPassword" id="repeat_password" class="input changeProfile" />
+                <input type="password" name="newPassword" id="repeat_password" class="input change_profile" />
             </label>
         </form>
          <button class="btn_save">Сохранить</button>

@@ -119,30 +119,30 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":q="Parse error on
         <div class="profile_user_data">
             <label for="email" class="profile_user_flex">
                 <p>Почта</p>
-                <input type="text" name="email" id="email" class="input changeProfile" placeholder={{email}} />
+                <input type="text" name="email" id="email" class="input change_profile" placeholder={{email}} />
             </label>
             <label for="login" class="profile_user_flex">
                 <p>Логин</p>
-                <input type="text" name="login" id="login" class="input changeProfile" placeholder={{login}} />
+                <input type="text" name="login" id="login" class="input change_profile" placeholder={{login}} />
             </label>
             <label for="first_name" class="profile_user_flex">
                 <p>Имя</p>
-                <input type="text" name="first_name" id="first_" class="input changeProfile"
+                <input type="text" name="first_name" id="first_" class="input change_profile"
                     placeholder={{first_name}} />
             </label>
             <label for="second_name" class="profile_user_flex">
                 <p> Фамилия </p>
-                <input type="text" name="second_name" id="second_name" class="input changeProfile"
+                <input type="text" name="second_name" id="second_name" class="input change_profile"
                     placeholder={{second_name}} />
             </label>
             <label for="display_name" class="profile_user_flex">
                 <p>Имя в чате</p>
-                <input type="text" name="display_name" id="display_name" class="input changeProfile"
+                <input type="text" name="display_name" id="display_name" class="input change_profile"
                     placeholder={{display_name}} />
             </label>
             <label for="phone" class="profile_user_flex">
                 <p>Телефон</p>
-                <input type="tel" name="phone" id="phone" class="input changeProfile" placeholder={{phone}} />
+                <input type="tel" name="phone" id="phone" class="input change_profile" placeholder={{phone}} />
             </label>
         </div>
         <button class="btn_save">Сохранить</button>
@@ -160,15 +160,15 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":q="Parse error on
         <form class="profile_user_data">
             <label for="old_password" class="profile_user_flex">
                 <p>Старый пароль</p>
-                <input type="password" class="input changeProfile" name="oldPassword" id="old_password" placeholder={{password}}/>
+                <input type="password" class="input change_profile" name="oldPassword" id="old_password" placeholder={{password}}/>
             </label>
             <label for="new_password" class="profile_user_flex">
                 <p>Новый пароль</p>
-                <input type="password" name="newPassword" id="new_password" class="input changeProfile" />
+                <input type="password" name="newPassword" id="new_password" class="input change_profile" />
             </label>
             <label for="repeat_password" class="profile_user_flex">
                 <p>Повторите пароль</p>
-                <input type="password" name="newPassword" id="repeat_password" class="input changeProfile" />
+                <input type="password" name="newPassword" id="repeat_password" class="input change_profile" />
             </label>
         </form>
          <button class="btn_save">Сохранить</button>
@@ -220,7 +220,7 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":q="Parse error on
         </nav>
         <ul class="chat_message_list">
             <li class="text_color_light ">19 июня </li>
-            <li class="chat_send-to-me">Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в
+            <li class="chat_send_to_me">Привет! Смотри, тут всплыл интересный кусок лунной космической истории — НАСА в
                 какой-то момент
                 попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты
                 летали с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны,
@@ -230,8 +230,8 @@ Expecting `+x.join(", ")+", got '"+(this.terminals_[k]||k)+"'":q="Parse error on
                 попали. Всего их было произведено 25 штук, одну из них недавно продали на аукционе за 45000 евро.
                 <span>11.56</span>
             </li>
-            <li class="chat_send-to-me"><img src=${Un} alt="картинка"> <span>11.58</span></li>
-            <li class="chat_send-by-me">Круто! <span>12.00</span></li>
+            <li class="chat_send_to_me"><img src=${Un} alt="картинка"> <span>11.58</span></li>
+            <li class="chat_send_by_me">Круто! <span>12.00</span></li>
         </ul>
         <form class="chat_footer">
             <img src=${Vn} alt="Добавить файл" width="30px">
