@@ -1,10 +1,10 @@
-import profileIcon from "../../icon/profileIcon.svg";
-import addPerson from "../../icon/addPerson.svg";
-import deletePerson from "../../icon/deletePerson.svg";
-import deleteChat from "../../icon/deleteChat.svg";
-import clip from "../../icon/clip.svg";
-import send from "../../icon/send.svg";
-import img from "../../icon/img.png";
+import profileIcon from '../../icon/profileIcon.svg';
+import addPerson from '../../icon/addPerson.svg';
+import deletePerson from '../../icon/deletePerson.svg';
+import deleteChat from '../../icon/deleteChat.svg';
+import clip from '../../icon/clip.svg';
+import send from '../../icon/send.svg';
+import img from '../../icon/img.png';
 const template = `
 <main class="chat_main">
     <aside class="chat_list">
@@ -71,5 +71,5 @@ const template = `
         </form>
     </section>
 </main>
-`
-export default template
+`;
+export default template;

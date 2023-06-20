@@ -13,5 +13,5 @@ const template = `
         <a href="/chat" class="btn">войти</a>
         <a href="/signin" class="link">нет аккаунта?</a>
     </form>
-</main>`
+</main>`;
 export default template;

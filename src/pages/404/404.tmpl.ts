@@ -4,5 +4,5 @@ const template = `
     <div>Не туда попали</div>
     <div><a href="/chat" class="link">назад к чатам</a></div>
 </main>
-`
+`;
 export default template;

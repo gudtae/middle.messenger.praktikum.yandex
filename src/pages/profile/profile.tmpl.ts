@@ -1,5 +1,5 @@
-import backToChat from "../../icon/backToChat.svg";
-import profileIcon from "../../icon/profileIcon.svg";
+import backToChat from '../../icon/backToChat.svg';
+import profileIcon from '../../icon/profileIcon.svg';
 
 const template = `
 <main class="profile_layout">
@@ -37,5 +37,5 @@ const template = `
         </div>
     </section>
 </main>
-`
+`;
 export default template;

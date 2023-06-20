@@ -1,5 +1,5 @@
-import backToChat from "../../icon/backToChat.svg";
-import profileIcon from "../../icon/profileIcon.svg";
+import backToChat from '../../icon/backToChat.svg';
+import profileIcon from '../../icon/profileIcon.svg';
 
 const template = `
 <main class="profile_layout">
@@ -44,5 +44,5 @@ const template = `
         <button class="btn_save">Сохранить</button>
     </form>
     <main>
-        `
+        `;
 export default template;

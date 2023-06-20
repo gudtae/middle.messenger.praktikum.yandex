@@ -33,5 +33,5 @@ const template = `
         <a href="/chat" class="btn">создать аккаунта</a>
         <a href="/" class="link">уже есть аккаунт?</a>
     </form>
-</main>`
+</main>`;
 export default template;
