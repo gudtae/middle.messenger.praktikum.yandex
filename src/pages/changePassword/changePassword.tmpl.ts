@@ -2,7 +2,7 @@ import backToChat from "../../icon/backToChat.svg";
 import profileIcon from "../../icon/profileIcon.svg";
 
 
-export default `
+const template = `
 <main class="profile_layout">
     <aside class="profile_aside">
         <a href="/chat"><img src=${backToChat} alt="Вернуться назад" width="30px" height="auto" />
@@ -29,3 +29,4 @@ export default `
     </section>
 </main>
 `
+export default template;

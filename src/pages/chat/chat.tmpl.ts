@@ -5,7 +5,7 @@ import deleteChat from "../../icon/deleteChat.svg";
 import clip from "../../icon/clip.svg";
 import send from "../../icon/send.svg";
 import img from "../../icon/img.png";
-export default `
+const template = `
 <main class="chat_main">
     <aside class="chat_list">
         <nav>
@@ -13,7 +13,7 @@ export default `
             <input type="search" class="chat_search_input" placeholder="искать" />
         </nav>
         <ul>
-            {{#each this}}
+            {{#each ChatData}}
             <li class="chat_list_li">
                 <img src=${profileIcon} alt="chat logo" width="30px" />
                 <div class="chat_message_info">
@@ -72,3 +72,4 @@ export default `
     </section>
 </main>
 `
+export default template

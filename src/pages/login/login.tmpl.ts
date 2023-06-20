@@ -1,4 +1,4 @@
-export default `
+const template = `
 <main class="login_signin">
     <form class="wrapper">
         <p>Вход</p>
@@ -14,3 +14,4 @@ export default `
         <a href="/signin" class="link">нет аккаунта?</a>
     </form>
 </main>`
+export default template;
