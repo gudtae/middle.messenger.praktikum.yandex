@@ -2,35 +2,14 @@ const template = `
 <main class="login_signin">
     <form class="wrapper wrapper_signin">
         <p>Регистрация</p>
-        <label for="email">
-            <p class="label">Почта</p>
-            <input type="email" id="email" name="email" class="input">
-        </label>
-        <label for="login">
-            <p class="label">Логин</p>
-            <input type="text" id="login" name="login" class="input">
-        </label>
-        <label for="first_name">
-            <p class="label">Имя</p>
-            <input type="text" id="first_name" name="first_name" class="input">
-        </label>
-        <label for="second_name">
-            <p class="label">Фамилия</p>
-            <input type="text" id="second_name" name="second_name" class="input">
-        </label>
-        <label for="phone">
-            <p class="label">Телефон</p>
-            <input type="tel" id="phone" name="phone" class="input">
-        </label>
-        <label for="password">
-            <p class="label">Пароль</p>
-            <input type="password" id="password" name="password" class="input">
-        </label>
-        <label for="passwordAgain">
-            <p class="label">Пароль (введите еще раз)</p>
-            <input type="password" id="passwordAgain" name="password" class="input">
-        </label>
-        <a href="/chat" class="btn">создать аккаунта</a>
+        {{{input_email}}}
+        {{{input_login}}}
+        {{{input_first_name}}}
+        {{{input_second_name}}}
+        {{{input_phone}}}
+        {{{input_password}}}
+        {{{input_password_again}}}
+        {{{button}}}
         <a href="/" class="link">уже есть аккаунт?</a>
     </form>
 </main>`;

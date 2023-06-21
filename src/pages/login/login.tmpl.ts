@@ -2,15 +2,9 @@ const template = `
 <main class="login_signin">
     <form class="wrapper">
         <p>Вход</p>
-        <label for="login">
-            <p class="label">Логин</p>
-            <input type="text" id="login" name="login" class="input">
-        </label>
-        <label for="password">
-            <p class="label">Пароль</p>
-            <input type="password" id="password" name="password" class="input">
-        </label>
-        <a href="/chat" class="btn">войти</a>
+        {{{input_login}}}
+        {{{input_password}}}
+        {{{button}}}
         <a href="/signin" class="link">нет аккаунта?</a>
     </form>
 </main>`;

@@ -14,8 +14,10 @@
     "plugins": [
         "@typescript-eslint"
     ],
+    "ignorePatterns": [
+        "*.js"
+    ],
     "root": true,
-    // "ignorePatterns": ["/static/assets/*.js"],
     "rules": {
         "indent": [
             "error",
@@ -46,6 +48,9 @@
         "max-params": [
             2,
             5
-        ]
+        ],
+        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-non-null-assertion": 0,
+        "@typescript-eslint/no-this-alias": 0
     }
 }
