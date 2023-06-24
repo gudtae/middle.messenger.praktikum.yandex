@@ -1,5 +1,4 @@
 const template = `
-<main class="login_signin">
     <form class="wrapper">
         <p>Вход</p>
         {{{input_login}}}
@@ -7,5 +6,5 @@ const template = `
         {{{button}}}
         <a href="/signin" class="link">нет аккаунта?</a>
     </form>
-</main>`;
+`;
 export default template;

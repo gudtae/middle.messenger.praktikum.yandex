@@ -1,4 +1,5 @@
 import { EventBus } from './EventBus';
+import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 import IBlock from './Interface';
 
@@ -14,7 +15,7 @@ type ObjectType = { [key: string]: any }
 
 class Block implements IBlock {
     static EVENTS = EVENTS;
-    _id = nanoid(6);
+    _id = '';
     _onPage = false;
 
     props: ObjectType;
@@ -32,10 +33,18 @@ class Block implements IBlock {
             props: props as ObjectType,
         };
         this.children = children;
+        this._id = nanoid(6);
         this.props = this._makePropsProxy(props);
         this.eventBus = () => eventBus;
         this._registerEvents(eventBus);
         eventBus.emit(Block.EVENTS.INIT);
+    }
+
+    _registerEvents(eventBus: EventBus) {
+        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
     _getChildrenAndProps(childrenAndProps: ObjectType) {
@@ -72,13 +81,6 @@ class Block implements IBlock {
         });
     }
 
-    _registerEvents(eventBus: EventBus) {
-        eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
-        eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
-    }
-
     _createResources() {
         const { tagName } = this._meta;
         this._element = this._createDocumentElement(tagName);
@@ -104,8 +106,6 @@ class Block implements IBlock {
         this.componentDidMount();
     }
 
-
-
     public dispatchComponentDidMount() {
         this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
@@ -130,13 +130,9 @@ class Block implements IBlock {
         Object.assign(this.props, nextProps);
     };
 
-    get element() {
-        return this._element;
-    }
-
     private _render() {
         const fragment = this.render();
-        this._removeEvents;
+        this._removeEvents();
         if (this._element) {
             this._element.innerHTML = '';
             this._element.append(fragment);
@@ -144,7 +140,7 @@ class Block implements IBlock {
         this._addEvents();
     }
 
-    protected compile(template: (context: any) => string, context: ObjectType) {
+    protected compile(template: string, context: ObjectType) {
         const contextAndStubs = { ...context };
 
         Object.entries(this.children).forEach(([name, component]) => {
@@ -156,12 +152,9 @@ class Block implements IBlock {
                 contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
             }
         });
-
-        const html = template(contextAndStubs);
-
         const temp = document.createElement('template');
 
-        temp.innerHTML = html;
+        temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
@@ -169,17 +162,15 @@ class Block implements IBlock {
             if (!stub) {
                 return;
             }
-
             component.getContent()?.append(...Array.from(stub.childNodes));
-
             stub.replaceWith(component.getContent());
         });
 
         return temp.content;
     }
 
-    protected render(): DocumentFragment {
-        return new DocumentFragment();
+    protected render() {
+        return this.compile('', {});
     }
 
     getContent() {
@@ -209,16 +200,16 @@ class Block implements IBlock {
             }
         });
     }
-
     _createDocumentElement(tagName: string) {
         // Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
         return document.createElement(tagName);
     }
-
+    get element() {
+        return this._element;
+    }
     show() {
         this.getContent()!.style.display = 'block';
     }
-
     hide() {
         this.getContent()!.style.display = 'none';
     }

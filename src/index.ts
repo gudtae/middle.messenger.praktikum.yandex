@@ -1,34 +1,47 @@
-import Login from './pages/login/Login';
-import Signin from './pages/signin/SignIn';
-import Profile from './pages/profile/Profile';
-import ChangeProfile from './pages/changeProfile/ChangeProfile';
-import ChangePassword from './pages/changePassword/ChangePassword';
-import Chat from './pages/chat/Chat';
-import Error500 from './pages/500/Error500';
 import Error404 from './pages/404/Error404';
+import Error500 from './pages/500/Error500';
+import ChangePassword from './pages/changePassword/ChangePassword';
+import ChangeProfile from './pages/changeProfile/ChangeProfile';
+import Chat from './pages/chat/Chat';
+import Login from './pages/login/Login';
+import Profile from './pages/profile/Profile';
+import SignIn from './pages/signin/SignIn';
 
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', (e) => {
     const app = document.querySelector('#app') as HTMLDivElement;
+    app.innerHTML = '';
+    e.preventDefault();
+    let page;
     const router = () => {
         switch (window.location.pathname) {
         case '/':
-            return Login();
+            page = new Login();
+            return page;
         case '/signin':
-            return Signin();
+            page = new SignIn();
+            return page;
         case '/profile':
-            return Profile();
+            page = new Profile();
+            return page;
         case '/changeProfile':
-            return ChangeProfile();
+            page = new ChangeProfile();
+            return page;
         case '/changePassword':
-            return ChangePassword();
+            page = new ChangePassword();
+            return page;
         case '/chat':
-            return Chat();
+            page = new Chat();
+            return page;
         case '/500':
-            return Error500();
+            page = new Error500();
+            return page;
         default:
-            return Error404();
+            page = new Error404();
+            return page;
         }
     };
-    app.innerHTML = router();
+
+    app.append(router().getContent()!);
+    router().dispatchComponentDidMount();
+
 });

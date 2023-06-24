@@ -1,5 +1,6 @@
 
 export const ProfileData = {
+    profileName: 'VAN',
     display_name: 'Ваня',
     email: 'pochta@ya.ru',
     login: 'ivanovivan',
@@ -9,8 +10,8 @@ export const ProfileData = {
     password: 'helloWorld!'
 };
 
-export const ChatData = [
-    {
+export const ChatData = {
+    list: [{
         chat_title: 'Андрей',
         last_message: 'Хотел узнать можешь одолжить деньги?',
         last_data: '10:49',
@@ -64,7 +65,8 @@ export const ChatData = [
         last_data: '1990',
         counter: 0,
     }
-];
+    ]
+};
 export const MessageData = {
     boolean: true,
     data: '12 сентября'

@@ -1,5 +1,16 @@
-import Handlebars from 'handlebars';
+import Block from '../../components/Utils/Block';
 import template from './500.tmpl';
 
-const Error500 = () => Handlebars.compile(template)({});
+class Error500 extends Block {
+    constructor(){
+        super('main');
+    }
+    init(){
+        this.getContent()?.setAttribute('class', 'error_layout');
+    }
+    protected render(): DocumentFragment {
+        return this.compile(template, {});
+    }
+}
+
 export default Error500;

@@ -25,11 +25,7 @@
         ],
         "linebreak-style": [
             "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
+            "windows"
         ],
         "semi": [
             "error",
@@ -37,6 +33,13 @@
         ],
         "no-console": "off",
         "no-unused-vars": "off",
+        "quotes": [
+            "error",
+            "single",
+            {
+                "allowTemplateLiterals": true
+            }
+        ],
         "eol-last": [
             "error",
             "always"

@@ -5,20 +5,28 @@
 
 .chat_list {
     background-color: $primary-color;
+    height: 95vh;
+    overflow: auto;
 
     nav {
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        box-shadow: 0 5px 6px -5px rgb(255 255 255 / 60%);
-        margin-bottom: 10px;
+        box-shadow: $box-shadow;
+        margin: 5px;
+        align-items: center;
+        position: sticky;
+        top: -1px;
+        background-color: $primary-color;
 
         a {
             color: #fff;
-            margin: 20px 20px 10px 0;
             font-size: 1rem;
         }
+
+        input {
+            margin: 5px;
+        }
     }
+
 }
 
 .chat_search_input {
@@ -33,21 +41,15 @@
 }
 
 .chat_list_li {
+    height: 60px;
+    box-shadow: $box-shadow;
     display: grid;
-    grid-template-columns: min-content 1fr min-content;
-    margin-top: 10px;
-    padding: 10px 5px;
-    box-shadow: 0 5px 6px -5px rgb(255 255 255 / 60%);
-
-    img {
-        display: flex;
-        justify-content: center;
-    }
+    grid-template-columns: 1fr 9fr 1fr;
+    align-items: center;
 }
 
 .chat_message_info {
     padding-left: 10px;
-    overflow: hidden;
 }
 
 .text_color_light {
@@ -58,7 +60,7 @@
 .chat_message_date {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 }
 
 .chat_counter {
@@ -71,22 +73,34 @@
     font-size: 1rem;
 }
 
-.chat_section{
-    margin: 0 10px;
+.chat_section {
+    margin: 10px;
+    height: 95vh;
+    overflow: auto;
+    background-color: $bg-color;
+
+    nav {
+        position: sticky;
+        top: -1px;
+        background-color: $bg-color;
+        z-index: 10;
+    }
 }
 
 .chat_navigation {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 5px 6px -5px rgb(255 255 255 / 60%);
+    box-shadow: $box-shadow;
     padding-bottom: 10px;
+    background-color: $bg-color;
+
 }
 
 
 .chat_buttons {
     display: flex;
 
-    img{
+    img {
         cursor: pointer;
     }
 }
@@ -97,6 +111,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    bottom: -1px;
+    background-color: $bg-color;
 }
 
 
@@ -109,6 +126,8 @@
     .text_color_light {
         text-align: center;
     }
+
+
 
     .chat_send_to_me {
         background-color: #fff;
@@ -143,6 +162,22 @@
             bottom: 5px;
             right: 5px;
         }
+    }
+}
+
+.send_file {
+    display: flex;
+    width: 30px;
+
+    img {
+        cursor: pointer;
+    }
+
+    input[type='file'] {
+        outline: 0;
+        opacity: 0;
+        pointer-events: none;
+        user-select: none
     }
 }
 

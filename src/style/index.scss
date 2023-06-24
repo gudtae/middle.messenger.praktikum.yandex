@@ -25,6 +25,7 @@ body {
     width: 240px;
     height: 40px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .link {
@@ -45,9 +46,11 @@ body {
     color: $links-color;
 }
 
-.red, .red:hover, .red:active{
+.red,
+.red:hover,
+.red:active {
     color: $dangerous-color;
-   
+
 }
 
 .input {
@@ -64,15 +67,15 @@ body {
     font-size: 14px;
 }
 
-.light_color{
+.light_color {
     color: $light-bg-color;
 }
 
-.bold{
+.bold {
     font-weight: $bold;
 }
 
-.error_layout{
+.error_layout {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -80,7 +83,7 @@ body {
     align-items: center;
     color: #fff;
 
-    .error_number{
+    .error_number {
         font-size: 4rem;
     }
 }
