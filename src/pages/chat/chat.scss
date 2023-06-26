@@ -5,7 +5,7 @@
 
 .chat_list {
     background-color: $primary-color;
-    height: 95vh;
+    height: 100%;
     overflow: auto;
 
     nav {
@@ -26,7 +26,10 @@
             margin: 5px;
         }
     }
-
+    .chat_overflow{
+        overflow: overlay;
+        height: 100%;
+    }
 }
 
 .chat_search_input {
@@ -75,7 +78,7 @@
 
 .chat_section {
     margin: 10px;
-    height: 95vh;
+    height: 100vh;
     overflow: auto;
     background-color: $bg-color;
 
