@@ -10,91 +10,91 @@ const ERROR_MESSAGES = {
 };
 
 const REGEXP = {
-    login: /^(?!^\d+)[a-zA-z0-9-_]{3,20}$/g,
-    password: /^(?=.*[a-z])(?=.*[A-Z]){1,}(?=.*[0-9]){1,}(?=.*[^\s]).{8,40}/g,
-    name: /^[А-ЯA-Z]{1}[а-яa-z-]*$/g,
-    email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/g,
-    phone: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/g,
+    login: /^(?!^\d+)[a-zA-Z0-9-_]{3,20}$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z]){1,}(?=.*[0-9]){1,}(?=.*[^\s]).{8,40}/,
+    name: /^[А-ЯA-Z]{1}[а-яa-z-]*$/,
+    email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+    phone: /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/,
 };
-const stateErrors: { [key: string]: string } = {};
-const checkValue = (label: string, value: string): string => {
-    let errorMessage = '';
+
+const checkRegExp = (label: string, value: string): string => {
+    if (value === '') {
+        return ERROR_MESSAGES.EMPTY;
+    }
     if (label === 'login') {
         if (!REGEXP.login.test(value)) {
-            errorMessage = ERROR_MESSAGES.LOGIN;
+            return ERROR_MESSAGES.LOGIN;
         }
-    } else if (label === 'password') {
+    }
+    if (label === 'password' || label === 'password_again' || label === 'oldPassword' || label === 'newPassword') {
         if (!REGEXP.password.test(value)) {
-            errorMessage = ERROR_MESSAGES.PASSWORD;
+            return ERROR_MESSAGES.PASSWORD;
         }
     }
-    stateErrors[label] = errorMessage;
-    return errorMessage;
-};
-
-const check = (event: HTMLInputElement): boolean => {
-    const name = event.name;
-    const value = event.value;
-    const parent = event.parentElement as HTMLElement;
-    const error = parent.querySelector('.red_error') as HTMLElement | null;
-
-    if (error) {
-        const errorMessage = checkValue(name, value);
-        error.textContent = errorMessage;
-        return errorMessage === '';
+    if (label === 'phone') {
+        if (!REGEXP.phone.test(value)) {
+            return ERROR_MESSAGES.PHONE;
+        }
     }
-
-    return false;
+    if (label === 'first_name') {
+        if (!REGEXP.name.test(value)) {
+            return ERROR_MESSAGES.FNAME;
+        }
+    }
+    if (label === 'second_name') {
+        if (!REGEXP.name.test(value)) {
+            return ERROR_MESSAGES.SNAME;
+        }
+    }
+    if (label === 'display_name') {
+        if (!REGEXP.name.test(value)) {
+            return ERROR_MESSAGES.DNAME;
+        }
+    }
+    if (label === 'email') {
+        if (!REGEXP.email.test(value)) {
+            return ERROR_MESSAGES.EMAIL;
+        }
+    }
+    return '';
 };
 
-export function focusin(event: Event) {
-    check(event.target as HTMLInputElement);
-}
+export const checkInputs = (event: HTMLInputElement): boolean => {
+    const parent = event.parentElement as HTMLElement;
+    const errorLine = parent.querySelector('.red_error') as HTMLDivElement;
+    const isValid = checkRegExp(event.name, event.value);
+    errorLine.textContent = isValid;
+    return !isValid;
+
+};
 
 
-export function focusout(event: Event) {
-    check(event.target as HTMLInputElement);
-}
-export function submit(e: SubmitEvent) {
-    e.preventDefault();
+export const focusin = (event: InputEvent): void => {
+    checkInputs(event.target as HTMLInputElement);
+};
+
+export const focusout = (event: InputEvent): void => {
+    checkInputs(event.target as HTMLInputElement);
+};
+
+export const submit = (event: Event): void => {
+    event.preventDefault();
+
     const children = document.querySelectorAll('input');
-    const state: { [key: string]: string } = {};
-    let isError = false;
 
+    const data: Record<string, string> = {};
     children.forEach((child: HTMLInputElement) => {
-        if (!check(child)) {
-            state[child.name] = child.value;
+        const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
+        const input = checkRegExp(child.name, child.value);
+        if (child.value === '' || input) {
+            error.textContent = input;
         } else {
-            isError = true;
+            error.textContent = '';
+            data[child.name] = child.value;
         }
     });
 
-    if (isError) {
-        console.log('ошибка');
-    } else {
-        let isEmpty = false;
-        children.forEach((child: HTMLInputElement) => {
-            if (child.value === '') {
-                isEmpty = true;
-                const parent = child.parentElement as HTMLElement;
-                const error = parent.querySelector('.red_error') as HTMLElement | null;
-                if (error) {
-                    error.textContent = ERROR_MESSAGES.EMPTY;
-                }
-            }
-        });
-
-        if (isEmpty) {
-            console.log('ошибка');
-        } else {
-            console.log(state);
-            children.forEach((child: HTMLInputElement) => {
-                child.value = '';
-            });
-            const errors = document.querySelectorAll('.red_error');
-            errors.forEach((error) => {
-                error.textContent = '';
-            });
-        }
+    if (Object.keys(data).length === children.length) {
+        console.log(data);
     }
-}
+};
