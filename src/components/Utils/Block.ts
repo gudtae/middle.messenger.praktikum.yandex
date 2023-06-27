@@ -10,6 +10,7 @@ enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type ObjectType = { [key: string]: any }
 
 
@@ -170,6 +171,7 @@ class Block implements IBlock {
     }
 
     protected render() {
+        this.render();
         return this.compile('', {});
     }
 
@@ -178,7 +180,7 @@ class Block implements IBlock {
     }
 
     _makePropsProxy(props: ObjectType) {
-
+        // eslint-disable-next-line @typescript-eslint/no-this-alias
         const self = this;
 
         return new Proxy(props, {
@@ -208,9 +210,11 @@ class Block implements IBlock {
         return this._element;
     }
     show() {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.getContent()!.style.display = 'block';
     }
     hide() {
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         this.getContent()!.style.display = 'none';
     }
 }

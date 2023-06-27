@@ -3,18 +3,15 @@ import {template} from './button.tmpl';
 
 interface ButtonProps{
     text: string,
-    events?: {[key: string]: (...args: any) => any}
+    events?: {[key: string]: (...args: never) => void}
 }
 export class Button extends Block {
     constructor(props: ButtonProps) {
-        super('input', props);
+        super('button', props);
     }
     protected render(): DocumentFragment {
         this.getContent()?.setAttribute('class', 'btn');
         this.getContent()?.setAttribute('type', 'submit');
-        this.getContent()?.setAttribute('value', this.props.text);
-        return this.compile(template, {
-            text: this.props.text,
-        });
+        return this.compile(template, this.props);
     }
 }

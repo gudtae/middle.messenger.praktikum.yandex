@@ -6,7 +6,7 @@ enum METHODS {
 }
 type Option = {
     data?: any,
-    headers?: { [key: string]: string},
+    headers?: { [key: string]: string },
     timeout?: number,
     [key: string]: any,
 }
