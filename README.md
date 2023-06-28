@@ -23,5 +23,5 @@
 ## Текущий pull request
 [Sprint 1](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/1#issue-1747964287)
 
-Sprint 2 
+[Sprint 2](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/2#issue-1778638810) 
 
