@@ -1,18 +1,32 @@
-.input.changeProfile {
+.input.change_profile {
     color: #fff;
     border: none;
     background-color: transparent;
     border-radius: 0;
 }
-.profile_img{
+
+.profile_img {
     display: flex;
-    justify-content: center;;
+    flex-direction: column;
+
+    img {
+        cursor: pointer;
+    }
+
+    input[type='file'] {
+        outline: 0;
+        opacity: 0;
+        pointer-events: none;
+        user-select: none
+    }
 }
-.btn_save{
+
+.btn_save {
     background-color: $button-color;
     color: #fff;
     width: 50%;
     height: calc(2rem + 2px);
     align-self: center;
     border-radius: 0.25rem;
+    cursor: pointer;
 }
