@@ -13,3 +13,6 @@ app.get('*', (req, res) => res.sendFile('./static/index.html', { root: _dirname}
 app.listen(PORT, function () {
     console.log(`Server on ${PORT}!`);
 });
+
+
+
