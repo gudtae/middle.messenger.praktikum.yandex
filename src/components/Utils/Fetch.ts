@@ -5,12 +5,13 @@ enum METHODS {
     DELETE = 'DELETE'
 }
 type Option = {
-    data?: any,
-    headers?: { [key: string]: string },
-    timeout?: number,
-    [key: string]: any,
+    method?: METHODS;
+    data?: Record<string, string> | null | undefined;
+    headers?: Record<string, string>;
+    timeout?: number;
+    retries?: number;
 }
-function queryStringify(data: { [key: string]: any }) {
+function queryStringify(data: Record<string, string>) {
     if (!data) {
         throw new Error('Должна быть data');
     }
@@ -22,10 +23,10 @@ function queryStringify(data: { [key: string]: any }) {
 }
 
 export class HTTPTransport {
-    request = (url: string, options: Option = {}, timeout = 5000) => {
+    request = (url: string, options: Option = {}, timeout = 5000): Promise<XMLHttpRequest> => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(options.method, url);
+            xhr.open(options.method || METHODS.GET, url);
             xhr.timeout = timeout;
 
             if (options.headers) {
@@ -63,7 +64,7 @@ export class HTTPTransport {
     };
 
     get = (url: string, options: Option = {}) => {
-        const queryString = queryStringify(options.data);
+        const queryString = queryStringify(options.data || {});
         const requestUrl = `${url}${queryString ? `?${queryString}` : ''}`;
         return this.request(
             requestUrl,
@@ -90,9 +91,23 @@ export class HTTPTransport {
 
     delete = (url: string, options: Option = {}) => {
         return this.request(
-            url + queryStringify(options.data),
+            url + queryStringify(options.data || {}),
             { ...options, method: METHODS.DELETE },
             options.timeout
         );
     };
+}
+export function fetchWithRetry(url: string, options: Option = {}): Promise<XMLHttpRequest | Response> {
+    const { retries = 1, ...restOptions } = options;
+    const transport = new HTTPTransport();
+
+    return transport.request(url, restOptions)
+        .then(xhr => new Response(xhr.responseText, { status: xhr.status, statusText: xhr.statusText }))
+        .catch(error => {
+            if (retries > 1) {
+                return fetchWithRetry(url, { ...restOptions, retries: retries - 1 });
+            } else {
+                throw error;
+            }
+        });
 }

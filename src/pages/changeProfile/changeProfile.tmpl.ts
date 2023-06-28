@@ -9,6 +9,7 @@ const template = `
     <form class="profile_data">
         <label for='avatar' class="profile_img">
             <img src="${profileIcon}" alt="Иконка пользователя" width="100px" />
+            <div class='red_error'>{{error}}</div>
             <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg">
         </label>
         <p>{{profileName}}</p>

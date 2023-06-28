@@ -40,8 +40,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
             return page;
         }
     };
-
+    // так как мы гарантировано передаем элемент в Block
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     app.append(router().getContent()!);
     router().dispatchComponentDidMount();
+
 
 });

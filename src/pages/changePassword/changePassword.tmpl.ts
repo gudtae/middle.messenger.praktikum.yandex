@@ -14,8 +14,9 @@ const template = `
             {{{old_password}}}
             {{{new_password}}}
             {{{repeat_password}}}
+            {{{button}}}
         </form>
-         {{{button}}}
+         
     </section>
 `;
 export default template;

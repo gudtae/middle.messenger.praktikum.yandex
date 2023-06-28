@@ -26,7 +26,8 @@
             margin: 5px;
         }
     }
-    .chat_overflow{
+
+    .chat_overflow {
         overflow: overlay;
         height: 100%;
     }
@@ -201,9 +202,20 @@
     text-align: start;
 }
 
-.input_img {
+.btn_img {
+    background-color: transparent;
+}
+
+.btn_send_img {
     background-color: $button-color;
-    border-radius: 50%;
+    border-radius: 10%;
     width: 30px;
     padding: 3px;
+}
+
+.chat_message_input {
+    width: 100%;
+    height: calc(2rem + 2px);
+    padding: 5px;
+    border-radius: 5px;
 }

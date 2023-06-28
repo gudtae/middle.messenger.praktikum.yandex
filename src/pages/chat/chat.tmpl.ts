@@ -4,7 +4,6 @@ import addPerson from '../../icon/addPerson.svg';
 import deletePerson from '../../icon/deletePerson.svg';
 import deleteChat from '../../icon/deleteChat.svg';
 import clip from '../../icon/clip.svg';
-import send from '../../icon/send.svg';
 import img from '../../icon/img.png';
 const template = `
 <aside class="chat_list">
@@ -51,11 +50,11 @@ const template = `
     </ul>
     <form class="chat_footer">
         <label for="file" class="send_file">
-             <img src=${clip} alt="Добавить файл" width="30px">
+            <img src=${clip} alt="Добавить файл" width="30px">
             <input type="file" name="file" id="file">
         </label>
-        <input type="text" placeholder="Сообщение" class="chat_search_input right" name="message">
-        <input type="image" src=${send} class="input_img"></input>
+        {{{message}}}
+        {{{btnSend}}}
     </form>
 </section>
 `;

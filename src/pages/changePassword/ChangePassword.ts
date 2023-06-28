@@ -1,8 +1,9 @@
 import template from './changePassword.tmpl';
 import Block from '../../components/Utils/Block';
-import { Input } from '../../components/Input/index';
+import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { ProfileData } from '../data/data';
+import {focusin, focusout, submit } from '../../components/Utils/Validation';
 
 class ChangePassword extends Block {
     constructor() {
@@ -12,33 +13,48 @@ class ChangePassword extends Block {
         this.getContent()?.setAttribute('class', 'profile_layout');
     }
     protected render(): DocumentFragment {
-        this.children.old_password = new Input({
+        this.children.old_password = new InputError({
             labelFor: 'old_password',
             labelText: 'Старый пароль',
             inputType: 'password',
             inputName: 'old_password',
             class: 'profile_user_flex',
+            events: {
+                focusin,
+                focusout
+            }
         });
-        this.children.new_password = new Input({
+        this.children.new_password = new InputError({
             labelFor: 'new_password',
             labelText: 'Новый пароль',
             inputType: 'password',
             inputName: 'new_password',
             class: 'profile_user_flex',
+            events: {
+                focusin,
+                focusout
+            }
         });
-        this.children.repeat_password = new Input({
+        this.children.repeat_password = new InputError({
             labelFor: 'repeat_passwors',
             labelText: 'Повторите пароль',
             inputType: 'password',
             inputName: 'repeat_password',
             class: 'profile_user_flex',
+            events: {
+                focusin,
+                focusout
+            }
         });
         this.children.button = new Button({
-            text: 'Сохранить'
+            text: 'Сохранить',
+            events: {
+                click: submit 
+            }
         });
-        this.children.old_password.getContent().children[1].setAttribute('class', 'input change_profile');
-        this.children.new_password.getContent().children[1].setAttribute('class', 'input change_profile');
-        this.children.repeat_password.getContent().children[1].setAttribute('class', 'input change_profile');
+        this.children.old_password.getContent().children[2].setAttribute('class', 'input change_profile');
+        this.children.new_password.getContent().children[2].setAttribute('class', 'input change_profile');
+        this.children.repeat_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.button.getContent().setAttribute('class', 'btn_save');
         return this.compile(template, this.props);
     }

@@ -2,7 +2,7 @@ import Block from '../Utils/Block';
 import { template } from './inputError.tmlp';
 interface InputProps {
     labelFor: string;
-    labelText: string;
+    labelText?: string,
     inputType: string;
     inputName: string;
     error?: string,
