@@ -4,15 +4,18 @@
     align-items: center;
     height: 100vh;
 }
+
 .wrapper{
     background-color: #fff;
     border-radius: 5px;
-
     width: 35%;
     height: 70vh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.label_err{
+    width: 80%;
 }
