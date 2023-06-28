@@ -4,7 +4,7 @@ export const template = `
 <li class="chat_list_li">
     <img src=${profileIcon} alt="chat logo" width="30px" />
     <div class="chat_message_info">
-        <div><b>{{chat_title}}</b></div>
+         <div><b>{{chat_title}}</b></div>
         <div class="text_color_light">{{last_message}}</div>
     </div>
     <div class="chat_message_date">

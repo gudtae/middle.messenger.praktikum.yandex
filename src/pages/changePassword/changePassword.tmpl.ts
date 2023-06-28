@@ -19,4 +19,4 @@ const template = `
          
     </section>
 `;
-export default template;
+export default template ;

@@ -68,6 +68,6 @@ export const ChatData = {
     ]
 };
 export const MessageData = {
-    boolean: true,
+    boolean:  true,
     data: '12 сентября'
 };

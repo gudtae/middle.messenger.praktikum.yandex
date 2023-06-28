@@ -7,4 +7,4 @@ const template = `
         <a href="/signin" class="link">нет аккаунта?</a>
     </form>
 `;
-export default template;
+export default template ;

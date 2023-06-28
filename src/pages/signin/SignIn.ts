@@ -95,7 +95,7 @@ class SignIn extends Block {
                 click: submit
             }
         });
-        return this.compile(template, this.props);
+        return this.compile(template, this.props );
     }
 }
 export default SignIn;

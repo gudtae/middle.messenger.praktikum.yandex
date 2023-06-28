@@ -13,4 +13,4 @@ class Error404 extends Block {
     }
 }
 
-export default Error404;
+export default Error404 ;

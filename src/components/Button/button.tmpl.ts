@@ -1,2 +1,2 @@
-export const template = `{{text}}`;
+export const template = `{{text}} `;
 

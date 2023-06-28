@@ -24,4 +24,4 @@ const template = `
         {{{button}}}
     </form>
         `;
-export default template;
+export default template ;

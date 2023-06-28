@@ -88,7 +88,7 @@ class ChangeProfile extends Block {
         this.children.button = new Button({
             text: 'Сохранить',
             events: {
-                click: submit 
+                click: submit
             }
         });
         this.children.email.getContent().children[2].setAttribute('class', 'input change_profile');
@@ -101,4 +101,4 @@ class ChangeProfile extends Block {
         return this.compile(template, this.props);
     }
 }
-export default ChangeProfile;
+export default ChangeProfile ;

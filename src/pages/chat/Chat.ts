@@ -32,4 +32,4 @@ class Chat extends Block {
         return this.compile(template, this.props);
     }
 }
-export default Chat;
+export default Chat ;

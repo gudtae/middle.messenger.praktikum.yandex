@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     e.preventDefault();
     let page;
     const router = () => {
-        switch (window.location.pathname) {
+        switch (window.location.pathname ) {
         case '/':
             page = new Login();
             return page;

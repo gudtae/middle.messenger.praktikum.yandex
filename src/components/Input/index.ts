@@ -1,5 +1,6 @@
 import Block from '../Utils/Block';
 import { template } from './input.tmpl';
+
 interface InputProps {
     labelFor: string;
     labelText: string;
@@ -8,6 +9,7 @@ interface InputProps {
     class?: string;
     placeholder?: string;
 }
+
 export class Input extends Block {
     constructor(props: InputProps) {
         super('label', props);

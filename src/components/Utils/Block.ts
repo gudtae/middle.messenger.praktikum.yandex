@@ -73,7 +73,7 @@ class Block implements IBlock {
         });
     }
     _removeEvents() {
-        const { events = {} } = this.props;
+        const { events = { } } = this.props;
 
         Object.keys(events).forEach(eventName => {
             if (this._element) {

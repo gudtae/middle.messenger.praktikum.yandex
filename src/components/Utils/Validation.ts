@@ -75,7 +75,7 @@ export const checkInputs = (event: HTMLInputElement): boolean => {
 };
 
 
-export const focusin = (event: InputEvent): void => {
+export  const focusin = (event: InputEvent): void => {
     checkInputs(event.target as HTMLInputElement);
 };
 

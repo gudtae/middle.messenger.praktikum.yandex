@@ -11,4 +11,4 @@ export interface IBlock {
         props: { [key: string]: any }
     };
 }
-export default IBlock;
+export default IBlock ;

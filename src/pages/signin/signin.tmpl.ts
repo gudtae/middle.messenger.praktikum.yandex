@@ -12,4 +12,4 @@ const template = `
         <a href="/" class="link">уже есть аккаунт?</a>
     </form>
 `;
-export default template;
+export default template ;

@@ -43,4 +43,4 @@ class Login extends Block {
         return this.compile(template, this.props);
     }
 }
-export default Login;
+export default Login ;

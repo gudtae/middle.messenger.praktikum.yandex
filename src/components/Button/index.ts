@@ -1,9 +1,9 @@
 import Block from '../Utils/Block';
-import {template} from './button.tmpl';
+import { template } from './button.tmpl';
 
-interface ButtonProps{
+interface ButtonProps {
     text: string,
-    events?: {[key: string]: (...args: never) => void}
+    events?: { [key: string]: (...args: never) => void }
 }
 export class Button extends Block {
     constructor(props: ButtonProps) {

@@ -58,4 +58,4 @@ const template = `
     </form>
 </section>
 `;
-export default template;
+export default template ;

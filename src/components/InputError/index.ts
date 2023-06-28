@@ -1,5 +1,6 @@
 import Block from '../Utils/Block';
 import { template } from './inputError.tmlp';
+
 interface InputProps {
     labelFor: string;
     labelText?: string,
@@ -10,6 +11,7 @@ interface InputProps {
     placeholder?: string;
     events?: { [key: string]: (...args: never) => void }
 }
+
 export class InputError extends Block {
     constructor(props: InputProps) {
         super('label', props);
@@ -24,3 +26,4 @@ export class InputError extends Block {
         });
     }
 }
+

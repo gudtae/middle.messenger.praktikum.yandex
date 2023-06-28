@@ -6,7 +6,7 @@ export class ChatList extends Block {
         super('ul', ChatData);
     }
     protected render(): DocumentFragment {
-        this.getContent()?.setAttribute('class', 'chat_overflow');
+         this.getContent()?.setAttribute('class', 'chat_overflow');
         return this.compile(template, this.props);
     }
 }

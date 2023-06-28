@@ -5,4 +5,4 @@ const template = `
     <div><a href="/chat" class="link">назад к чатам</a></div>
 </main>
 `;
-export default template;
+export default template ;

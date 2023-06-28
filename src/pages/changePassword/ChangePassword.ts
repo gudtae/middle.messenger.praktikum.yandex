@@ -59,4 +59,4 @@ class ChangePassword extends Block {
         return this.compile(template, this.props);
     }
 }
-export default ChangePassword;
+export default ChangePassword ;

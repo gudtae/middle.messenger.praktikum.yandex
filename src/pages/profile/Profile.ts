@@ -14,4 +14,4 @@ class Profile extends Block {
         return this.compile(template, this.props);
     }
 }
-export default Profile;
+export default Profile ;
