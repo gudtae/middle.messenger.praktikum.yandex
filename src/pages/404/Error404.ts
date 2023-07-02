@@ -1,4 +1,4 @@
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import template from './404.tmpl';
 
 class Error404 extends Block {

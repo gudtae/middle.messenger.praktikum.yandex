@@ -1,4 +1,4 @@
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import template from './500.tmpl';
 
 class Error500 extends Block {

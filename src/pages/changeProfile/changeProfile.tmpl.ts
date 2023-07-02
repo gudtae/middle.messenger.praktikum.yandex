@@ -3,7 +3,7 @@ import profileIcon from '../../icon/profileIcon.svg';
 
 const template = `
     <aside class="profile_aside">
-        <a href="/chat"><img src=${backToChat} alt="Вернуться назад" width="50px" height="auto" />
+        <a href="/messanger"><img src=${backToChat} alt="Вернуться назад" width="50px" height="auto" />
     </a>
     </aside>
     <form class="profile_data">

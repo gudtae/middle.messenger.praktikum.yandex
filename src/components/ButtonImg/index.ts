@@ -1,4 +1,4 @@
-import Block from '../Utils/Block';
+import Block from '../../Utils/Block';
 import { template } from './buttonImg.tmpl';
 
 interface ButtonProps {

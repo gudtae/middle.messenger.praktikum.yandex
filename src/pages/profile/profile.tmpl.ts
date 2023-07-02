@@ -3,7 +3,7 @@ import profileIcon from '../../icon/profileIcon.svg';
 
 const template = `
     <aside class="profile_aside">
-        <a href="/chat" class="link"><img src="${backToChat}" alt="Вернуться в чат" width="30px" height="auto">
+        <a href="/messanger" class="link"><img src="${backToChat}" alt="Вернуться в чат" width="50px" height="auto">
         </a>
     </aside>
     <section class="profile_data">
@@ -30,8 +30,8 @@ const template = `
             </li>
         </ul>
         <div class="profile_link">
-            <a href="/changeProfile" class="link">Изменить данные</a>
-            <a href="/changePassword" class="link">Изменить пароль</a>
+            <a href="/settings/change-profile" class="link">Изменить данные</a>
+            <a href="/settings/change-password" class="link">Изменить пароль</a>
             <a href="/" class="link red">Выйти</a>
         </div>
     </section>

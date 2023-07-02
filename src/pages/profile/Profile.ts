@@ -1,5 +1,5 @@
 import template from './profile.tmpl';
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import { ProfileData } from '../data/data';
 
 class Profile extends Block {

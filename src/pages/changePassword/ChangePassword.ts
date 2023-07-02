@@ -1,9 +1,9 @@
 import template from './changePassword.tmpl';
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { ProfileData } from '../data/data';
-import {focusin, focusout, submit } from '../../components/Utils/Validation';
+import {focusin, focusout, submit } from '../../Utils/Validation';
 
 class ChangePassword extends Block {
     constructor() {

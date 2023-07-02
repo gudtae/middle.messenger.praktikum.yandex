@@ -1,8 +1,8 @@
 import template from './signin.tmpl';
 import { Button } from '../../components/Button/index';
 import { InputError } from '../../components/InputError/index';
-import Block from '../../components/Utils/Block';
-import { focusin, focusout,submit } from '../../components/Utils/Validation';
+import Block from '../../Utils/Block';
+import { focusin, focusout,submit } from '../../Utils/Validation';
 
 class SignIn extends Block {
     constructor() {
@@ -11,7 +11,7 @@ class SignIn extends Block {
     init(){
         this.getContent()?.setAttribute('class', 'login_signin');
     }
-    protected render(): DocumentFragment {
+    render(): DocumentFragment {
         this.children.input_email = new InputError({
             labelFor: 'email',
             labelText: 'Почта',

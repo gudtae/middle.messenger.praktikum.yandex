@@ -1,8 +1,8 @@
 import template from './login.tmpl';
 import { Button } from '../../components/Button/index';
 import { InputError } from '../../components/InputError/index';
-import Block from '../../components/Utils/Block';
-import {focusin, focusout, submit } from '../../components/Utils/Validation';
+import Block from '../../Utils/Block';
+import {focusin, focusout, submit } from '../../Utils/Validation';
 
 class Login extends Block {
     constructor() {

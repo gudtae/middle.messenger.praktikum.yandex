@@ -1,9 +1,10 @@
 import template from './chat.tmpl';
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import { ChatList } from '../../components/ChatList';
 import { InputError } from '../../components/InputError';
-import {focusout, messageSbmt} from '../../components/Utils/Validation';
+import {focusout, messageSbmt} from '../../Utils/Validation';
 import { Buttonimg } from '../../components/ButtonImg';
+import { ChatData } from '../data/data';
 
 class Chat extends Block {
     constructor() {
@@ -13,7 +14,7 @@ class Chat extends Block {
         this.getContent()?.setAttribute('class', 'chat_main');
     }
     protected render(): DocumentFragment {
-        this.children.chat_list = new ChatList();
+        this.children.chat_list = new ChatList(ChatData);
         this.children.message = new InputError({
             labelFor: 'message',
             inputType: 'text',

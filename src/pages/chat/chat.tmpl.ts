@@ -8,7 +8,7 @@ import img from '../../icon/img.png';
 const template = `
 <aside class="chat_list">
     <nav>
-        <a href="/profile"><img src=${profile} alt="" width="30px"></a>
+        <a href="/settings"><img src=${profile} alt="" width="30px"></a>
         <input type="search" class="chat_search_input" placeholder="искать" />
     </nav>
     {{{chat_list}}}

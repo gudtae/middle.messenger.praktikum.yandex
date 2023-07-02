@@ -4,7 +4,7 @@ const template = `
         {{{input_login}}}
         {{{input_password}}}
         {{{button}}}
-        <a href="/signin" class="link">нет аккаунта?</a>
+        <a href="/sign-in" class="link">нет аккаунта?</a>
     </form>
 `;
 export default template ;

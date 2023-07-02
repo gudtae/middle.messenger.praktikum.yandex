@@ -1,9 +1,9 @@
 import template from './changeProfile.tmpl';
-import Block from '../../components/Utils/Block';
+import Block from '../../Utils/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { ProfileData } from '../data/data';
-import { submit, focusin, focusout } from '../../components/Utils/Validation';
+import { submit, focusin, focusout } from '../../Utils/Validation';
 
 class ChangeProfile extends Block {
     constructor() {

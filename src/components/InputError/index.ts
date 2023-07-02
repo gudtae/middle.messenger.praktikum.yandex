@@ -1,4 +1,4 @@
-import Block from '../Utils/Block';
+import Block from '../../Utils/Block';
 import { template } from './inputError.tmlp';
 
 interface InputProps {

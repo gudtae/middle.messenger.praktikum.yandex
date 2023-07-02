@@ -1,7 +1,7 @@
 import { EventBus } from './EventBus';
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
-import IBlock from './Interface';
+import { IBlock } from './Interface';
 
 
 enum EVENTS {
@@ -11,7 +11,7 @@ enum EVENTS {
     FLOW_RENDER = 'flow:render'
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ObjectType = { [key: string]: any }
+type ObjectType = Record<string, any>;
 
 
 class Block implements IBlock {
@@ -41,14 +41,14 @@ class Block implements IBlock {
         eventBus.emit(Block.EVENTS.INIT);
     }
 
-    _registerEvents(eventBus: EventBus) {
+    _registerEvents(eventBus: EventBus): void {
         eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
         eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
         eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
     }
 
-    _getChildrenAndProps(childrenAndProps: ObjectType) {
+    private _getChildrenAndProps(childrenAndProps: ObjectType) {
         const props: ObjectType = {};
         const children: ObjectType = {};
 
@@ -73,7 +73,7 @@ class Block implements IBlock {
         });
     }
     _removeEvents() {
-        const { events = { } } = this.props;
+        const { events = {} } = this.props;
 
         Object.keys(events).forEach(eventName => {
             if (this._element) {
@@ -87,7 +87,7 @@ class Block implements IBlock {
         this._element = this._createDocumentElement(tagName);
     }
 
-    private _init() {
+    _init(): void {
         this._createResources();
 
         this.init();
@@ -113,7 +113,7 @@ class Block implements IBlock {
         Object.values(this.children).forEach(child => child.dispatchComponentDidMount());
     }
 
-    private _componentDidUpdate(oldProps: ObjectType, newProps: ObjectType) {
+    _componentDidUpdate(oldProps: ObjectType, newProps: ObjectType) {
         if (this.componentDidUpdate(oldProps, newProps)) {
             this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
         }
@@ -131,7 +131,7 @@ class Block implements IBlock {
         Object.assign(this.props, nextProps);
     };
 
-    private _render() {
+    _render() {
         const fragment = this.render();
         this._removeEvents();
         if (this._element) {
@@ -143,39 +143,33 @@ class Block implements IBlock {
 
     protected compile(template: string, context: ObjectType) {
         const contextAndStubs = { ...context };
-
-        Object.entries(this.children).forEach(([name, component]) => {
-            if (Array.isArray(component)) {
-                contextAndStubs[name] = component.map(
-                    (child) => `<div data-id="${child.id}"></div>`
-                );
-            } else {
-                contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
-            }
-        });
         const temp = document.createElement('template');
-
+    
+        Object.entries(this.children).forEach(([name, component]) => {
+            const stub = Array.isArray(component)
+                ? component.map((child) => `<div data-id="${child.id}"></div>`)
+                : `<div data-id="${component.id}"></div>`;
+            contextAndStubs[name] = stub;
+        });
+    
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
+    
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
-
-            if (!stub) {
-                return;
-            }
+            if (!stub) return;
+    
             component.getContent()?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent());
         });
-
+    
         return temp.content;
     }
-
     protected render() {
-        this.render();
         return this.compile('', {});
     }
 
-    getContent() {
+    public getContent() {
         return this.element;
     }
 
