@@ -3,15 +3,27 @@ import Block from '../../core/Block';
 import { Link } from '../../components/Link';
 import { Button } from '../../components/Button';
 import AuthController from '../../controllers/AuthController';
+import store, { IState, withStore } from '../../core/Store';
 
-class Profile extends Block {
+
+class ProfileBase extends Block {
     constructor() {
         super('main');
     }
     componentDidMount(): void {
         AuthController.fetchUser();
+        
     }
     protected init(): void {
+        const user = store.getState().user;
+        this.setProps({
+            login: user?.login,
+            email: user?.email,
+            phone: user?.phone,
+            first_name: user?.first_name,
+            second_name: user?.second_name,
+            display_name: user?.display_name
+        });
         this.getContent()?.setAttribute('class', 'profile_layout');
         this.children.link_to_chat = new Link({
             text: ``,
@@ -44,4 +56,8 @@ class Profile extends Block {
         return this.compile(template, this.props);
     }
 }
+function mapStateToProps(state: IState) {
+    return {...state.user};
+}
+const Profile = withStore(mapStateToProps)(ProfileBase);
 export default Profile;

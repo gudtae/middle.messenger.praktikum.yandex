@@ -1,31 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-type Callback = (event: any) => void;
+type EventList = Record<string | number | symbol, unknown[]>;
 
-export class EventBus {
-    private readonly listeners: Record<string, Callback[]> = {};
+export class EventBus<Events extends EventList = EventList> {
+    private readonly listeners = {} as { [K in keyof Events]?: Array<(...args: Events[K]) => void>; };
 
-    on(event: string, callback: (...args: any) => void): void {
-        if (!this.listeners[event]) {
-            this.listeners[event] = [];
-        }
-        this.listeners[event].push(callback);
+    public on<K extends keyof Events>(event: K, callback: (...args: Events[K]) => void): void {
+        const events = this.listeners[event] ?? [];
+        events.push(callback);
+        this.listeners[event] = events;
     }
 
-    off(event: string, callback: Callback): void {
-        if (!this.listeners[event]) {
-            throw new Error(`Нет события: ${event}`);
-        }
-        this.listeners[event] = this.listeners[event].filter(
-            listener => listener !== callback
-        );
+    public off<K extends keyof Events>(event: K, callback: (...args: Events[K]) => void): void {
+        this.listeners[event] = this.listeners[event]?.filter((listener) => listener !== callback) ?? [];
     }
 
-    emit(event: string, ...args: any): void {
-        if (!this.listeners[event]) {
-            throw new Event(`Нет события: ${event}`);
-        }
-        this.listeners[event].forEach(listener  => {
-            listener(args);
-        });
+    public emit<K extends keyof Events>(event: K, ...args: Events[K]): void {
+        this.listeners[event]?.forEach((listener) => listener(...args));
     }
 }

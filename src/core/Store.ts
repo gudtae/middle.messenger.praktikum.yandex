@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IUser } from '../api/AuthAPI';
 import Set from '../utils/Set';
 import { EventBus } from './EventBus';
-interface IState {
+import Block from './Block';
+export interface IState {
     user?: IUser
 }
 enum EVENT {
@@ -19,4 +21,19 @@ class Storage extends EventBus {
     }
 }
 const store = new Storage();
+export function withStore(mapStateToProps: (state: IState) => any) {
+    return (Component: typeof Block) => {
+        return class extends Component {
+            constructor(props: any) {
+                super({ ...props, ...mapStateToProps(store.getState()) });
+
+                store.on(EVENT.UPDATE, () => {
+                    const propsFromState = mapStateToProps(store.getState());
+                    this.setProps(propsFromState);
+                });
+            }
+        };
+    };
+}
+
 export default store;
