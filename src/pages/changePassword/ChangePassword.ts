@@ -1,9 +1,10 @@
 import template from './changePassword.tmpl';
-import Block from '../../Utils/Block';
+import Block from '../../core/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { ProfileData } from '../data/data';
-import {focusin, focusout, submit } from '../../Utils/Validation';
+import {focusin, focusout, submit } from '../../core/Validation';
+import { Link } from '../../components/Link';
 
 class ChangePassword extends Block {
     constructor() {
@@ -13,6 +14,11 @@ class ChangePassword extends Block {
         this.getContent()?.setAttribute('class', 'profile_layout');
     }
     protected render(): DocumentFragment {
+        this.children.link_to_chat = new Link({
+            text: ``,
+            to: '/messanger',
+            className: 'linkImg',
+        });
         this.children.old_password = new InputError({
             labelFor: 'old_password',
             labelText: 'Старый пароль',

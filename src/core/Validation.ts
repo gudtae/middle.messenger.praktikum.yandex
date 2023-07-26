@@ -18,7 +18,7 @@ const REGEXP = {
     message: /^\s*$/,
 };
 
-const checkRegExp = (label: string, value: string): string => {
+export const checkRegExp = (label: string, value: string): string => {
     if (value === '') {
         return ERROR_MESSAGES.EMPTY;
     }
@@ -83,7 +83,7 @@ export const focusout = (event: InputEvent): void => {
     checkInputs(event.target as HTMLInputElement);
 };
 
-export const submit = (event: Event): void => {
+export const submit = (event: Event) => {
     event.preventDefault();
     const children = document.querySelectorAll('input');
     const data: Record<string, string> = {};

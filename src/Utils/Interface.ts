@@ -1,9 +1,8 @@
-import { EventBus } from './EventBus';
+import { EventBus } from '../core/EventBus';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IBlock {
     _id: string;
-    _onPage: boolean;
     props: Record<string, any>;
     children: Record<string, any>;
     eventBus: () => EventBus;
@@ -17,3 +16,6 @@ export interface IBlock {
     hide(): void;
 }
 
+export type Indexed<T = any> = {
+    [key in string]: T;
+};

@@ -1,4 +1,4 @@
-import Block from '../../Utils/Block';
+import Block from '../../core/Block';
 import { template } from './chatList.tmpl';
 interface ChatListProps {
     list: {

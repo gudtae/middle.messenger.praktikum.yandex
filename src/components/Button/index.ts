@@ -1,8 +1,9 @@
-import Block from '../../Utils/Block';
+import Block from '../../core/Block';
 import { template } from './button.tmpl';
 
 interface ButtonProps {
     text: string,
+    className?: string,
     events?: { [key: string]: (...args: never) => void }
 }
 export class Button extends Block {
@@ -10,7 +11,11 @@ export class Button extends Block {
         super('button', props);
     }
     protected render(): DocumentFragment {
-        this.getContent()?.setAttribute('class', 'btn');
+        if (this.props.className) {
+            this.getContent()?.setAttribute('class', this.props.className);
+        } else {
+            this.getContent()?.setAttribute('class', 'btn');
+        }
         this.getContent()?.setAttribute('type', 'submit');
         return this.compile(template, this.props);
     }

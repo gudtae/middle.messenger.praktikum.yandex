@@ -1,9 +1,10 @@
 import template from './changeProfile.tmpl';
-import Block from '../../Utils/Block';
+import Block from '../../core/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { ProfileData } from '../data/data';
-import { submit, focusin, focusout } from '../../Utils/Validation';
+import { submit, focusin, focusout } from '../../core/Validation';
+import { Link } from '../../components/Link';
 
 class ChangeProfile extends Block {
     constructor() {
@@ -13,6 +14,11 @@ class ChangeProfile extends Block {
         this.getContent()?.setAttribute('class', 'profile_layout');
     }
     protected render(): DocumentFragment {
+        this.children.link_to_chat = new Link({
+            text: ``,
+            to: '/messanger',
+            className: 'linkImg',
+        });
         this.children.email = new InputError({
             labelFor: 'email',
             labelText: 'Почта',
@@ -101,4 +107,4 @@ class ChangeProfile extends Block {
         return this.compile(template, this.props);
     }
 }
-export default ChangeProfile ;
+export default ChangeProfile;

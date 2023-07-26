@@ -1,10 +1,11 @@
 import template from './chat.tmpl';
-import Block from '../../Utils/Block';
+import Block from '../../core/Block';
 import { ChatList } from '../../components/ChatList';
 import { InputError } from '../../components/InputError';
-import {focusout, messageSbmt} from '../../Utils/Validation';
+import {focusout, messageSbmt} from '../../core/Validation';
 import { Buttonimg } from '../../components/ButtonImg';
 import { ChatData } from '../data/data';
+import { Link } from '../../components/Link';
 
 class Chat extends Block {
     constructor() {
@@ -14,6 +15,11 @@ class Chat extends Block {
         this.getContent()?.setAttribute('class', 'chat_main');
     }
     protected render(): DocumentFragment {
+        this.children.link = new Link({
+            text: '',
+            to: '/settings',
+            className: 'link_profile',
+        });
         this.children.chat_list = new ChatList(ChatData);
         this.children.message = new InputError({
             labelFor: 'message',

@@ -1,7 +1,7 @@
-import { EventBus } from './EventBus';
 import Handlebars from 'handlebars';
+import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
-import { IBlock } from './Interface';
+import { IBlock } from '../utils/Interface';
 
 
 enum EVENTS {
@@ -17,12 +17,10 @@ type ObjectType = Record<string, any>;
 class Block implements IBlock {
     static EVENTS = EVENTS;
     _id = '';
-    _onPage = false;
 
     props: ObjectType;
     public children: ObjectType;
     eventBus: () => EventBus;
-
     _element: HTMLElement | null = null;
     _meta: { tagName: string; props: ObjectType; };
 
@@ -98,10 +96,8 @@ class Block implements IBlock {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     protected init(): void { }
 
-
-    componentDidMount() {
-        return true;
-    }
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    componentDidMount(): void {}
 
     _componentDidMount() {
         this.componentDidMount();
@@ -144,25 +140,25 @@ class Block implements IBlock {
     protected compile(template: string, context: ObjectType) {
         const contextAndStubs = { ...context };
         const temp = document.createElement('template');
-    
+
         Object.entries(this.children).forEach(([name, component]) => {
             const stub = Array.isArray(component)
                 ? component.map((child) => `<div data-id="${child.id}"></div>`)
                 : `<div data-id="${component.id}"></div>`;
             contextAndStubs[name] = stub;
         });
-    
+
         temp.innerHTML = Handlebars.compile(template)(contextAndStubs);
-    
+
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
             if (!stub) return;
-    
+
             component.getContent()?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent());
         });
-    
+
         return temp.content;
     }
     protected render() {

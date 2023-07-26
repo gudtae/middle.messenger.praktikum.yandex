@@ -1,11 +1,9 @@
-import backToChat from '../../icon/backToChat.svg';
 import profileIcon from '../../icon/profileIcon.svg';
 
 
 const template = `
     <aside class="profile_aside">
-        <a href="/messanger"><img src=${backToChat} alt="Вернуться назад" width="50px" height="auto" />
-        </a>
+        {{{link_to_chat}}}
     </aside>
     <section class="profile_data">
         <img src=${profileIcon} alt="Аватарка пользователя" width="100px" />

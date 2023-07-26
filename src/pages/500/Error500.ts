@@ -1,4 +1,5 @@
-import Block from '../../Utils/Block';
+import { Link } from '../../components/Link';
+import Block from '../../core/Block';
 import template from './500.tmpl';
 
 class Error500 extends Block {
@@ -7,6 +8,11 @@ class Error500 extends Block {
     }
     init(){
         this.getContent()?.setAttribute('class', 'error_layout');
+        this.children.link = new Link({
+            to: '/',
+            text: 'Вернуться на главную',
+            className: 'link'
+        });
     }
     protected render(): DocumentFragment {
         return this.compile(template, {});
