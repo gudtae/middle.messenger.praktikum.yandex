@@ -3,6 +3,7 @@ import { IUser } from '../api/AuthAPI';
 import Set from '../utils/Set';
 import { EventBus } from './EventBus';
 import Block from './Block';
+
 export interface IState {
     user?: IUser
 }

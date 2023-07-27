@@ -2,18 +2,25 @@ import template from './changeProfile.tmpl';
 import Block from '../../core/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
-import { ProfileData } from '../data/data';
-import { submit, focusin, focusout } from '../../core/Validation';
+import { focusin, focusout } from '../../core/Validation';
 import { Link } from '../../components/Link';
+import AuthController from '../../controllers/AuthController';
+import store, { IState, withStore } from '../../core/Store';
+import UserController from '../../controllers/UserController';
 
-class ChangeProfile extends Block {
+class ChangeProfileBase extends Block {
     constructor() {
-        super('main', ProfileData);
+        super('main');
+    }
+    componentDidMount(): void {
+        AuthController.fetchUser();
     }
     init() {
         this.getContent()?.setAttribute('class', 'profile_layout');
+
     }
     protected render(): DocumentFragment {
+        const user = store.getState().user;
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
@@ -25,7 +32,7 @@ class ChangeProfile extends Block {
             inputType: 'email',
             inputName: 'email',
             class: 'profile_user_flex',
-            placeholder: ProfileData.email,
+            placeholder: user?.email,
             events: {
                 focusin,
                 focusout
@@ -37,7 +44,7 @@ class ChangeProfile extends Block {
             inputType: 'text',
             inputName: 'login',
             class: 'profile_user_flex',
-            placeholder: ProfileData.login,
+            placeholder: user?.login,
             events: {
                 focusin,
                 focusout
@@ -49,7 +56,7 @@ class ChangeProfile extends Block {
             inputType: 'text',
             inputName: 'first_name',
             class: 'profile_user_flex',
-            placeholder: ProfileData.first_name,
+            placeholder: user?.first_name,
             events: {
                 focusin,
                 focusout
@@ -59,9 +66,9 @@ class ChangeProfile extends Block {
             labelFor: 'second_name',
             labelText: 'Фамилия',
             inputType: 'text',
-            inputName: 'secons_name',
+            inputName: 'second_name',
             class: 'profile_user_flex',
-            placeholder: ProfileData.second_name,
+            placeholder: user?.second_name,
             events: {
                 focusin,
                 focusout
@@ -73,7 +80,7 @@ class ChangeProfile extends Block {
             inputType: 'text',
             inputName: 'display_name',
             class: 'profile_user_flex',
-            placeholder: ProfileData.display_name,
+            placeholder: user?.display_name,
             events: {
                 focusin,
                 focusout
@@ -85,7 +92,7 @@ class ChangeProfile extends Block {
             inputType: 'tel',
             inputName: 'phone',
             class: 'profile_user_flex',
-            placeholder: ProfileData.phone,
+            placeholder: user?.phone,
             events: {
                 focusin,
                 focusout
@@ -94,7 +101,7 @@ class ChangeProfile extends Block {
         this.children.button = new Button({
             text: 'Сохранить',
             events: {
-                click: submit
+                click: onSubmit
             }
         });
         this.children.email.getContent().children[2].setAttribute('class', 'input change_profile');
@@ -107,4 +114,20 @@ class ChangeProfile extends Block {
         return this.compile(template, this.props);
     }
 }
+const onSubmit = (event: Event): void => {
+    event.preventDefault();
+    const children = document.querySelectorAll('input');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = {};
+    children.forEach((child: HTMLInputElement) => {
+        data[child.name] = child.value;
+    });
+    UserController.changeProfile(data);
+    console.log(data);
+
+};
+function mapStateToProps(state: IState) {
+    return { ...state.user };
+}
+const ChangeProfile = withStore(mapStateToProps)(ChangeProfileBase);
 export default ChangeProfile;

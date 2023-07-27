@@ -6,7 +6,7 @@ const template = `
     </aside>
     <section class="profile_data">
         <img src="${profileIcon}" alt="Иконка пользователя" width="100px">
-        <p>{{profileName}}</p>
+        <p>{{display_name}}</p>
         <ul class="profile_user_data">
             <li class="profile_user_flex">
                 <span>Почта</span> <span class="light_color">{{email}}</span>

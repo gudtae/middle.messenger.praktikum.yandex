@@ -17,12 +17,12 @@ class ProfileBase extends Block {
     protected init(): void {
         const user = store.getState().user;
         this.setProps({
-            login: user?.login,
             email: user?.email,
-            phone: user?.phone,
+            login: user?.login,
             first_name: user?.first_name,
             second_name: user?.second_name,
-            display_name: user?.display_name
+            display_name: user?.display_name,
+            phone: user?.phone,
         });
         this.getContent()?.setAttribute('class', 'profile_layout');
         this.children.link_to_chat = new Link({
@@ -56,6 +56,7 @@ class ProfileBase extends Block {
         return this.compile(template, this.props);
     }
 }
+//https://ya-praktikum.tech/api/v2/resources${res.avatar}
 function mapStateToProps(state: IState) {
     return {...state.user};
 }

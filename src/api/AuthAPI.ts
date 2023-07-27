@@ -17,13 +17,13 @@ export interface ISignInData {
 
 export interface IUser {
     id: number;
+    email: string;
     first_name: string;
     second_name: string;
     display_name: string;
     login: string;
-    email: string;
-    phone: string;
     avatar: string;
+    phone: string;
 }
 
 export class AuthAPI extends BaseAPI {
