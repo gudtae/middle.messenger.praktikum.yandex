@@ -6,7 +6,7 @@ import { checkRegExp, focusin, focusout } from '../../core/Validation';
 import { Link } from '../../components/Link';
 import store, { IState, withStore } from '../../core/Store';
 import UserController from '../../controllers/UserController';
-import { isEqual } from '../../utils/IsEqual';
+import { isEqual } from '../../Utils/IsEqual';
 import profileIcon from '../../icon/profileIcon.svg';
 import { ProfileImg } from '../../components/ProfileImg';
 
@@ -22,7 +22,7 @@ class ChangePasswordBase extends Block {
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
-            className: 'linkImg',
+            className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
             path: avatar
@@ -73,14 +73,14 @@ class ChangePasswordBase extends Block {
         this.children.new_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.repeat_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.button.getContent().setAttribute('class', 'btn_save');
-        
+
     }
     protected render(): DocumentFragment {
 
         return this.compile(template, this.props);
     }
 }
-const onSubmit = (event: Event): void => {
+const onSubmit = async (event: Event): Promise<void> => {
     event.preventDefault();
     const children = document.querySelectorAll('input');
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -102,8 +102,13 @@ const onSubmit = (event: Event): void => {
                 oldPassword: data.oldPassword,
                 newPassword: data.newPassword,
             };
-            UserController.changePassword(sendData);
-            console.log(sendData);
+            try {
+                await UserController.changePassword(sendData);
+            } catch (error) {
+                const errorContent = document.querySelectorAll('.red_error')[0] as HTMLDivElement;
+                errorContent.textContent = 'Пароль введен не верно';
+            }
+
         } else {
             const error = document.querySelectorAll('.red_error')[2] as HTMLDivElement;
             error.textContent = 'Пароли не совпадают';

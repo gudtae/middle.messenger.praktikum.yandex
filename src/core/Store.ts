@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IUser } from '../api/AuthAPI';
-import Set from '../utils/Set';
+import Set from '../Utils/Set';
 import { EventBus } from './EventBus';
 import Block from './Block';
 

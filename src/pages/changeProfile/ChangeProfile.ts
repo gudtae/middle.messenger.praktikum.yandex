@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import template from './changeProfile.tmpl';
 import Block from '../../core/Block';
 import { ProfileImg } from '../../components/ProfileImg';
@@ -5,10 +6,11 @@ import profileIcon from '../../icon/profileIcon.svg';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
 import { Link } from '../../components/Link';
-import { focusin, focusout } from '../../core/Validation';
+import { checkRegExp, focusin, focusout } from '../../core/Validation';
 import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
 import store, { IState, withStore } from '../../core/Store';
+import Router from '../../core/Router';
 
 class ChangeProfileBase extends Block {
     constructor() {
@@ -29,7 +31,7 @@ class ChangeProfileBase extends Block {
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
-            className: 'linkImg',
+            className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
             path: avatar
@@ -41,17 +43,23 @@ class ChangeProfileBase extends Block {
             class: '',
             accept: 'image/jpeg',
             events: {
-                change: (e: Event): void => {
+                change: async (e: Event): Promise<void> => {
                     const inputTarget = e.target as HTMLInputElement;
                     const files = inputTarget.files as FileList;
                     const file = files?.[0];
-                    console.log(file);
                     if (!file) {
                         return;
                     }
                     const form = new FormData();
                     form.append('avatar', file);
-                    UserController.changeAvatar(form);
+                    try {
+                        await UserController.changeAvatar(form);
+                        AuthController.fetchUser();
+                        Router.go('/settings');
+                    } catch (error) {
+                        const errorLine = inputTarget.parentElement?.querySelector('.red_error') as HTMLDivElement;
+                        errorLine.textContent = 'Слишком тяжелая фотография';
+                    }
                 }
             }
         });
@@ -153,14 +161,22 @@ class ChangeProfileBase extends Block {
 }
 const onSubmit = (event: Event): void => {
     event.preventDefault();
-    const children = document.querySelectorAll('input');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const children = document.querySelectorAll('.input.change_profile');
     const data: any = {};
-    children.forEach((child: HTMLInputElement) => {
-        data[child.name] = child.value;
+    children.forEach((child: any) => {
+        const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
+        const input = checkRegExp(child.name, child.value);
+        if (child.value === '' || input) {
+            error.textContent = input;
+        } else {
+            error.textContent = '';
+            data[child.name] = child.value;
+        }
     });
-    UserController.changeProfile(data);
-    console.log(data);
+
+    if (Object.keys(data).length === children.length) {
+        UserController.changeProfile(data);
+    }
 };
 function mapStateToProps(state: IState) {
     return { ...state.user };

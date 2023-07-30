@@ -5,7 +5,7 @@
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
-import { IBlock } from '../utils/Interface';
+import { IBlock } from '../Utils/Interface';
 
 
 enum EVENTS {

@@ -21,9 +21,6 @@ export class InputError extends Block {
     init() {
         this.getContent()?.setAttribute('for', this.props.labelFor);
         this.getContent()?.setAttribute('class', this.props.class);
-        if (this.props.accept){
-            this.getContent()?.setAttribute('accept', this.props.accept);
-        }
     }
     render() {
         return this.compile(template, {

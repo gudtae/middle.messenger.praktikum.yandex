@@ -1,4 +1,4 @@
-import { Indexed } from '../utils/Interface';
+import { Indexed } from '../Utils/Interface';
 
 function Merge(lhs: Indexed, rhs: Indexed): Indexed {
     for (const p in rhs) {

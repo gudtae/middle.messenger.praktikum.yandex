@@ -1,5 +1,5 @@
 import Block from './Block';
-import { isEqual } from '../utils/IsEqual';
+import { isEqual } from '../Utils/IsEqual';
 
 function render(query: string, block: Block) {
     const root = document.querySelector(query);
