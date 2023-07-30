@@ -29,7 +29,7 @@ class ProfileBase extends Block {
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
-            className: 'linkImg',
+            className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
             path: avatar
