@@ -1,7 +1,7 @@
 @import './normalize';
 @import './variables';
 @import '../pages/login/login';
-@import '../pages//signin/signin.scss';
+@import '../pages//signup/signup.scss';
 @import '../pages/profile/profile';
 @import '../pages/changeProfile/changeProfile';
 @import '../pages/chat/chat';
@@ -32,6 +32,7 @@ body {
     color: $links-color;
     font-size: 14px;
     display: block;
+    background-color: transparent;
 }
 
 .btn:active,
@@ -93,4 +94,9 @@ body {
     .error_number {
         font-size: 4rem;
     }
+}
+
+.user_avatar {
+    border-radius: 50%;
+    height: 100px;
 }

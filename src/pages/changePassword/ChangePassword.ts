@@ -1,46 +1,63 @@
 import template from './changePassword.tmpl';
-import Block from '../../components/Utils/Block';
+import Block from '../../core/Block';
 import { InputError } from '../../components/InputError/index';
 import { Button } from '../../components/Button';
-import { ProfileData } from '../data/data';
-import {focusin, focusout, submit } from '../../components/Utils/Validation';
+import { checkRegExp, focusin, focusout } from '../../core/Validation';
+import { Link } from '../../components/Link';
+import store, { IState, withStore } from '../../core/Store';
+import UserController from '../../controllers/UserController';
+import { isEqual } from '../../utils/IsEqual';
+import profileIcon from '../../icon/profileIcon.svg';
+import { ProfileImg } from '../../components/ProfileImg';
 
-class ChangePassword extends Block {
+
+class ChangePasswordBase extends Block {
     constructor() {
-        super('main', ProfileData);
+        super('main');
     }
     init() {
         this.getContent()?.setAttribute('class', 'profile_layout');
-    }
-    protected render(): DocumentFragment {
+        const user = store.getState().user;
+        const avatar = (user?.avatar == null) ? profileIcon : 'https://ya-praktikum.tech/api/v2/resources' + user?.avatar;
+        this.children.link_to_chat = new Link({
+            text: ``,
+            to: '/messanger',
+            className: 'linkImg',
+        });
+        this.children.profile_img = new ProfileImg({
+            path: avatar
+        });
         this.children.old_password = new InputError({
-            labelFor: 'old_password',
+            labelFor: 'oldPassword',
             labelText: 'Старый пароль',
             inputType: 'password',
-            inputName: 'old_password',
+            inputName: 'oldPassword',
             class: 'profile_user_flex',
+            placeholder: 'Введите старый пароль',
             events: {
                 focusin,
                 focusout
             }
         });
         this.children.new_password = new InputError({
-            labelFor: 'new_password',
+            labelFor: 'newPassword',
             labelText: 'Новый пароль',
             inputType: 'password',
-            inputName: 'new_password',
+            inputName: 'newPassword',
             class: 'profile_user_flex',
+            placeholder: 'Введите новый пароль',
             events: {
                 focusin,
                 focusout
             }
         });
         this.children.repeat_password = new InputError({
-            labelFor: 'repeat_passwors',
+            labelFor: 'repeatPasswors',
             labelText: 'Повторите пароль',
             inputType: 'password',
-            inputName: 'repeat_password',
+            inputName: 'repeatPassword',
             class: 'profile_user_flex',
+            placeholder: 'Повторите пароль',
             events: {
                 focusin,
                 focusout
@@ -49,14 +66,53 @@ class ChangePassword extends Block {
         this.children.button = new Button({
             text: 'Сохранить',
             events: {
-                click: submit 
+                click: onSubmit
             }
         });
         this.children.old_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.new_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.repeat_password.getContent().children[2].setAttribute('class', 'input change_profile');
         this.children.button.getContent().setAttribute('class', 'btn_save');
+        
+    }
+    protected render(): DocumentFragment {
+
         return this.compile(template, this.props);
     }
 }
-export default ChangePassword ;
+const onSubmit = (event: Event): void => {
+    event.preventDefault();
+    const children = document.querySelectorAll('input');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = {};
+    children.forEach((child: HTMLInputElement) => {
+        const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
+        const input = checkRegExp(child.name, child.value);
+        if (child.value === '' || input) {
+            error.textContent = input;
+        } else {
+            error.textContent = '';
+            data[child.name] = child.value;
+        }
+    });
+
+    if (Object.keys(data).length === children.length) {
+        if (isEqual(data.newPassword, data.repeatPassword)) {
+            const sendData = {
+                oldPassword: data.oldPassword,
+                newPassword: data.newPassword,
+            };
+            UserController.changePassword(sendData);
+            console.log(sendData);
+        } else {
+            const error = document.querySelectorAll('.red_error')[2] as HTMLDivElement;
+            error.textContent = 'Пароли не совпадают';
+        }
+
+    }
+};
+function mapStateToProps(state: IState) {
+    return { ...state.user };
+}
+const ChangePassword = withStore(mapStateToProps)(ChangePasswordBase);
+export default ChangePassword;

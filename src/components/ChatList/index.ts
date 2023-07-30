@@ -1,9 +1,16 @@
-import Block from '../Utils/Block';
+import Block from '../../core/Block';
 import { template } from './chatList.tmpl';
-import { ChatData } from '../../pages/data/data';
+interface ChatListProps {
+    list: {
+        chat_title: string;
+        last_message: string;
+        last_data: string;
+        counter: number;
+    }[]
+}
 export class ChatList extends Block {
-    constructor() {
-        super('ul', ChatData);
+    constructor(props: ChatListProps) {
+        super('ul', props);
     }
     protected render(): DocumentFragment {
         this.getContent()?.setAttribute('class', 'chat_overflow');
