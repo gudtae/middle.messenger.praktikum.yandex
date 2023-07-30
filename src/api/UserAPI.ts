@@ -30,15 +30,18 @@ export class UserAPI extends BaseAPI {
         super('/user');
     }
     changeProfile(data: IProfile): Promise<IUser>{
-        return this.http.put('/profile', data);
+        return this.http.put('/profile', JSON.stringify(data));
     }
-    changeAvatar(data: string): Promise<IResponce>{
-        return this.http.put('/profile/avatar', data);
+    changeAvatar(file: FormData): Promise<IResponce>{
+        return this.http.put('/profile/avatar', file);
     }
     changePassword(data: IPassword): Promise<void>{
-        return this.http.put('/password', data);
+        return this.http.put('/password', JSON.stringify(data));
     }
-    getUser(data: IGet): Promise<IResponce>{
-        return this.http.get(`${data.id}`);
+    getUser(id: IGet): Promise<IResponce>{
+        return this.http.get(`${id.id}`);
+    }
+    searchUser(login: string): Promise<IResponce[]>{
+        return this.http.post('/search', JSON.stringify({login}));
     }
 }

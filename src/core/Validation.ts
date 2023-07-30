@@ -57,12 +57,14 @@ export const checkRegExp = (label: string, value: string): string => {
             return ERROR_MESSAGES.EMAIL;
         }
     }
-    // if (label === 'message') {
-    //     if (!REGEXP.message.test(value)) {
-    //         return ERROR_MESSAGES.EMPTY;
-    //     }
-    // }
     return '';
+};
+export const checkPassword = (): boolean => {
+    const newPassword = document.getElementById('new_password') as HTMLInputElement;
+    const repeatPassword = document.getElementById('repeat_password') as HTMLInputElement;
+    const newPValue = newPassword.value;
+    const repeatPValue = repeatPassword.value;
+    return newPValue === repeatPValue;
 };
 
 export const checkInputs = (event: HTMLInputElement): boolean => {

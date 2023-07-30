@@ -4,6 +4,8 @@ import { Link } from '../../components/Link';
 import { Button } from '../../components/Button';
 import AuthController from '../../controllers/AuthController';
 import store, { IState, withStore } from '../../core/Store';
+import { ProfileImg } from '../../components/ProfileImg';
+import profileIcon from '../../icon/profileIcon.svg';
 
 
 class ProfileBase extends Block {
@@ -12,23 +14,25 @@ class ProfileBase extends Block {
     }
     componentDidMount(): void {
         AuthController.fetchUser();
-        
     }
     protected init(): void {
         const user = store.getState().user;
         this.setProps({
-            email: user?.email,
             login: user?.login,
             first_name: user?.first_name,
             second_name: user?.second_name,
             display_name: user?.display_name,
-            phone: user?.phone,
         });
+        const avatar = (user?.avatar == null) ? profileIcon : 'https://ya-praktikum.tech/api/v2/resources' + user?.avatar;
+
         this.getContent()?.setAttribute('class', 'profile_layout');
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
             className: 'linkImg',
+        });
+        this.children.profile_img = new ProfileImg({
+            path: avatar
         });
         this.children.link_change_profile = new Link({
             text: 'Изменить данные',

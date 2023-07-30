@@ -5,7 +5,8 @@ import { EventBus } from './EventBus';
 import Block from './Block';
 
 export interface IState {
-    user?: IUser
+    user?: IUser,
+    
 }
 enum EVENT {
     UPDATE = 'update',

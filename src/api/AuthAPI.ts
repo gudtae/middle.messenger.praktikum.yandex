@@ -32,11 +32,11 @@ export class AuthAPI extends BaseAPI {
     }
 
     signin(data: ISignInData): Promise<void> {
-        return this.http.post('/signin', data);
+        return this.http.post('/signin', JSON.stringify(data));
     }
 
     signup(data: ISignUpData): Promise<void> {
-        return this.http.post('/signup', data);
+        return this.http.post('/signup', JSON.stringify(data));
     }
 
     logout(): Promise<void> {

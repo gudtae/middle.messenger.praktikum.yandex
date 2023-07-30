@@ -1,17 +1,17 @@
-import profileIcon from '../../icon/profileIcon.svg';
-
 const template = `
-    <aside class="profile_aside">
-       {{{link_to_chat}}}
+<aside class="profile_aside">
+    {{{link_to_chat}}}
     </a>
-    </aside>
-    <form class="profile_data">
+</aside>
+<aside class="profile_data">
+    <form class="form_center profile_form">
         <label for='avatar' class="profile_img">
-            <img src="${profileIcon}" alt="Иконка пользователя" width="100px" />
+            {{{profile_img}}}
             <div class='red_error'>{{error}}</div>
-            <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg">
+            {{{input_avatar}}}
         </label>
-        <p>{{profileName}}</p>
+    </form>
+    <form class="form_center"> 
         <div class="profile_user_data">
             {{{email}}}
             {{{login}}}
@@ -22,5 +22,7 @@ const template = `
         </div>
         {{{button}}}
     </form>
-        `;
+</aside>
+
+`;
 export default template ;
