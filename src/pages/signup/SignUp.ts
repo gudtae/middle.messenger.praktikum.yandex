@@ -5,7 +5,7 @@ import { Button } from '../../components/Button/index';
 import { Link } from '../../components/Link/index';
 import { checkRegExp, focusin, focusout} from '../../core/Validation';
 import AuthController from '../../controllers/AuthController';
-import { isEqual } from '../../utils/IsEqual';
+import { isEqual } from '../../Utils/IsEqual';
 
 class SignIn extends Block {
     constructor() {

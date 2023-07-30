@@ -5,7 +5,7 @@
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
-import { IBlock } from '../utils/Interface';
+import { IBlock } from '../Utils/Interface';
 
 
 enum EVENTS {
@@ -14,7 +14,6 @@ enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ObjectType = Record<string, any>;
 
 

@@ -1,4 +1,4 @@
-import { EventBus } from '../core/EventBus';
+import { EventBus } from '../core/EventBus'; 
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export interface IBlock {

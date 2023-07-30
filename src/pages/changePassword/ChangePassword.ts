@@ -6,7 +6,7 @@ import { checkRegExp, focusin, focusout } from '../../core/Validation';
 import { Link } from '../../components/Link';
 import store, { IState, withStore } from '../../core/Store';
 import UserController from '../../controllers/UserController';
-import { isEqual } from '../../utils/IsEqual';
+import { isEqual } from '../../Utils/IsEqual';
 import profileIcon from '../../icon/profileIcon.svg';
 import { ProfileImg } from '../../components/ProfileImg';
 
