@@ -1,4 +1,6 @@
-type EventList = Record<string | number | symbol, unknown[]>;
+import { ObjectType } from './Block';
+
+type EventList = Record<string | number | symbol, ObjectType[]>;
 
 export class EventBus<Events extends EventList = EventList> {
     private readonly listeners = {} as { [K in keyof Events]?: Array<(...args: Events[K]) => void>; };

@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+// ---------------------------------------------------------
 import Handlebars from 'handlebars';
 import { EventBus } from './EventBus';
 import { nanoid } from 'nanoid';
@@ -11,7 +15,7 @@ enum EVENTS {
     FLOW_RENDER = 'flow:render'
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type ObjectType = Record<string, any>;
+export type ObjectType = Record<string, any>;
 
 
 class Block implements IBlock {
