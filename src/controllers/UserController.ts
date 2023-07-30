@@ -22,16 +22,18 @@ class UserController {
             Router.go('/settings');
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
     async changeAvatar(file: FormData) {
         try {
             await this.api.changeAvatar(file);
             store.set('user.avatar', file);
-            await AuthController.fetchUser();
+            AuthController.fetchUser();
             Router.go('/settings');
         } catch (error) {
             console.log(error);
+            throw error;
         }
     }
     async getUser(id: IGet) {

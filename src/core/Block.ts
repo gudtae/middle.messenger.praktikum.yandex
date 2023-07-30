@@ -14,6 +14,7 @@ enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ObjectType = Record<string, any>;
 
 

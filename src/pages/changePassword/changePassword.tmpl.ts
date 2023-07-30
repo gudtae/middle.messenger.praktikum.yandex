@@ -8,6 +8,7 @@ const template = `
             {{{old_password}}}
             {{{new_password}}}
             {{{repeat_password}}}
+            <div id="change_password_error" class="red_error"></div>
             {{{button}}}
         </form>
          

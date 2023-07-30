@@ -1,5 +1,5 @@
-import { Indexed } from './Interface';
-import Merge from './Merge';
+import { Indexed } from '../Utils/Interface';
+import Merge from '../Utils/Merge';
 function Set(object: Indexed | unknown, path: string, value: unknown): Indexed | unknown {
     if (typeof object !== 'object' || object === null) {
         return object;
