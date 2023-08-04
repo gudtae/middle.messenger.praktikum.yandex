@@ -24,4 +24,10 @@ export class ChatAPI extends BaseAPI {
     getChats(): Promise<IChatList[]> {
         return this.http.get('');
     }
+    newChat(title: string): Promise<void> {
+        return this.http.post('', JSON.stringify({title}));
+    }
+    deleteChat(data: {chatId: number}): Promise<void> {
+        return this.http.delete('', JSON.stringify(data));
+    }
 }

@@ -1,11 +1,12 @@
 import Block from '../../core/Block';
 import template from './modal.tmpl';
-import './modal.scss';
+// import './modal.scss';
 import { Button } from '../Button';
 import { InputError } from '../InputError';
 import { ERROR_MESSAGES, focusout } from '../../core/Validation';
-import ChatController from '../../controllers/ChatController';
-class Modal extends Block {
+// import ChatController from '../../controllers/ChatController';
+
+class ModalDelUser extends Block {
     constructor() {
         super('div');
     }
@@ -21,17 +22,17 @@ class Modal extends Block {
             }
         });
         this.children.input = new InputError({
-            labelFor: 'createChat',
+            labelFor: 'addUser',
             inputType: 'text',
-            inputName: 'createChat',
+            inputName: 'addUser',
             class: 'modal_input',
-            placeholder: 'Введите название чата',
+            placeholder: 'Введите логин пользователя',
             events: {
                 focusout
             }
         });
         this.children.buttonSubmit = new Button({
-            text: 'Создать чат',
+            text: 'Найти',
             events: {
                 click: () => {
                     const children = document.querySelector('input');
@@ -40,7 +41,7 @@ class Modal extends Block {
                         if (children.value === '') {
                             error.textContent = ERROR_MESSAGES.EMPTY;
                         } else {
-                            ChatController.createChat(children.value);
+                            
                             this.hide();
                         }
                     }
@@ -52,4 +53,4 @@ class Modal extends Block {
         return this.compile(template, { ...this.props });
     }
 }
-export default Modal;
+export default ModalDelUser;

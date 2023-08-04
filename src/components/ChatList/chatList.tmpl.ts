@@ -1,7 +1,7 @@
 import profileIcon from '../../icon/profileIcon.svg';
 export const template = `
 {{#each chatList}}
-<li class="chat_list_li">
+<li class="chat_list_li" id="{{id}}">
     {{#if avatar}}
         <img src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="Аватарка чата" width="30px" height="30px">
     {{else}}

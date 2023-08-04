@@ -1,16 +1,27 @@
 import Block from '../../core/Block';
 import { template } from './chatList.tmpl';
-import { IState, withStore } from '../../core/Store';
+import store, { IState, withStore } from '../../core/Store';
 import ChatController from '../../controllers/ChatController';
 import './chatList.scss';
 
 class ChatListBase extends Block {
     constructor(props = {}) {
-        super('ul', { ...props });
+        super('ul', {
+            ...props,
+            events: {
+                click: (e: {target: {id: number}}) => {
+                    if (e.target.id){
+                        store.set('currentChat', {id: e.target.id});
+                        console.log(store.getState());
+                    }
+                }
+            }
+
+        });
     }
     protected init(): void {
         ChatController.getChats();
-    
+        console.log(store.getState());
     }
     protected render(): DocumentFragment {
         this.getContent()?.setAttribute('class', 'chat_overflow');

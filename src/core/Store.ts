@@ -8,12 +8,16 @@ import { IChatList } from '../api/ChatAPI';
 export interface IState {
     user?: IUser,
     chatList?: { chatList: IChatList[] },
+    chatMessage?: {chatMessage: string},
+    currentChat?: {id: number | undefined },
 }
 enum EVENT {
     UPDATE = 'update',
 }
 class Storage extends EventBus {
-    _state: IState = {};
+    _state: IState = {
+        currentChat: {id: undefined},
+    };
 
     getState() {
         return this._state;

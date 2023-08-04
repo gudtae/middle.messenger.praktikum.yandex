@@ -1,27 +1,18 @@
 import profileIcon from '../../icon/profileIcon.svg';
-import addPerson from '../../icon/addPerson.svg';
-import deletePerson from '../../icon/deletePerson.svg';
-import deleteChat from '../../icon/deleteChat.svg';
 import clip from '../../icon/clip.svg';
 import img from '../../icon/img.png';
 
 const template = `
+{{{modalDeleteChat}}}
+{{{modalAddUser}}}
+{{{modalDeleteUser}}}
 <nav>
 <ul class="chat_navigation">
     <li><img src=${profileIcon} alt="chat logo" width="30px" /> <span class="bold white">Андрей</span></li>
     <li class="chat_buttons">
-        <div class="text_color_light fz_small">
-            <img src="${addPerson}" alt="добавить пользователя" width="30px">
-
-        </div>
-        <div class="text_color_light fz_small">
-            <img src="${deletePerson}" alt="удалить пользователя" width="30px">
-
-        </div>
-        <div class="text_color_light fz_small">
-            <img src="${deleteChat}" alt="удалить чат" width="30px">
-
-        </div>
+        {{{buttonAddUser}}}
+        {{{buttonDeleteUser}}}
+        {{{buttonDeleteChat}}}
     </li>
 </ul>
 </nav>

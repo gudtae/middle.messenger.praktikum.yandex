@@ -12,5 +12,21 @@ class ChatController {
             console.log(error);
         }
     }
+    async createChat(title: string){
+        try {
+            await this.api.newChat(title);
+            this.getChats();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async deleteChat(id: number){
+        try {
+            await this.api.deleteChat({chatId: id});
+            this.getChats();
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 export default new ChatController();

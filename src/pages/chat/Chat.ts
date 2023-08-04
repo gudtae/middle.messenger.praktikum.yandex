@@ -1,14 +1,12 @@
 import template from './chat.tmpl';
 import Block from '../../core/Block';
 import ChatList from '../../components/ChatList';
-import { InputError } from '../../components/InputError';
-import {focusout, messageSbmt} from '../../core/Validation';
-import { Buttonimg } from '../../components/ButtonImg';
 import { Link } from '../../components/Link';
 import { IState, withStore } from '../../core/Store';
 import { Button } from '../../components/Button';
 import './chat.scss'; 
 import Modal from '../../components/Modal';
+import ChatMessage from '../../components/ChatMessage';
 
 class ChatBase extends Block {
     constructor(props = {}) {
@@ -32,22 +30,8 @@ class ChatBase extends Block {
             }
         });
         this.children.chat_list = new ChatList({});
+        this.children.message = new ChatMessage({});
         
-        this.children.message = new InputError({
-            labelFor: 'message',
-            inputType: 'text',
-            inputName: 'message',
-            class: 'chat_message_input',
-            placeholder: 'Введите сообщение',
-            events: {
-                focusout
-            }
-        });
-        this.children.btnSend = new Buttonimg({
-            events: {
-                click: messageSbmt
-            }
-        });
     }
     protected render(): DocumentFragment {
         
