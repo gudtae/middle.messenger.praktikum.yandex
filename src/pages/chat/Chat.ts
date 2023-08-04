@@ -14,7 +14,7 @@ class ChatBase extends Block {
     }
     protected init(): void {
         this.getContent()?.setAttribute('class', 'chat_main');
-        this.children.modal = new Modal({});
+        this.children.modal = new Modal();
         this.children.link = new Link({
             text: '',
             to: '/settings',
