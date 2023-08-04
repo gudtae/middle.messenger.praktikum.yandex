@@ -1,5 +1,6 @@
 import Block from '../../core/Block';
 import { template } from './inputError.tmlp';
+import './inputError.scss';
 
 interface InputProps {
     labelFor: string;

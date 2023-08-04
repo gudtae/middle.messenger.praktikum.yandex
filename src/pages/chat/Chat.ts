@@ -1,26 +1,38 @@
 import template from './chat.tmpl';
 import Block from '../../core/Block';
-import { ChatList } from '../../components/ChatList';
+import ChatList from '../../components/ChatList';
 import { InputError } from '../../components/InputError';
 import {focusout, messageSbmt} from '../../core/Validation';
 import { Buttonimg } from '../../components/ButtonImg';
-import { ChatData } from '../data/data';
 import { Link } from '../../components/Link';
+import { IState, withStore } from '../../core/Store';
+import { Button } from '../../components/Button';
+import './chat.scss'; 
+import Modal from '../../components/Modal';
 
-class Chat extends Block {
-    constructor() {
-        super('main');
+class ChatBase extends Block {
+    constructor(props = {}) {
+        super('main', {...props});
     }
     protected init(): void {
         this.getContent()?.setAttribute('class', 'chat_main');
-    }
-    protected render(): DocumentFragment {
+        this.children.modal = new Modal({});
         this.children.link = new Link({
             text: '',
             to: '/settings',
             className: 'link_profile',
         });
-        this.children.chat_list = new ChatList(ChatData);
+        this.children.addChat = new Button({
+            className: 'chat_add_chat',
+            text: '',
+            events: {
+                click : () => {
+                    this.children.modal.show();
+                }
+            }
+        });
+        this.children.chat_list = new ChatList({});
+        
         this.children.message = new InputError({
             labelFor: 'message',
             inputType: 'text',
@@ -36,7 +48,15 @@ class Chat extends Block {
                 click: messageSbmt
             }
         });
+    }
+    protected render(): DocumentFragment {
+        
         return this.compile(template, this.props);
     }
 }
+
+function mapStateToProps(state: IState) {
+    return {...state.chatList};
+}
+const Chat = withStore(mapStateToProps)(ChatBase);
 export default Chat ;

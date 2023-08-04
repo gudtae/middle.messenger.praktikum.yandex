@@ -4,11 +4,14 @@ import deletePerson from '../../icon/deletePerson.svg';
 import deleteChat from '../../icon/deleteChat.svg';
 import clip from '../../icon/clip.svg';
 import img from '../../icon/img.png';
+
 const template = `
+{{{modal}}}
 <aside class="chat_list">
     <nav>
-    {{{link}}}
+        {{{link}}}
         <input type="search" class="chat_search_input" placeholder="искать" />
+        {{{addChat}}}
     </nav>
     {{{chat_list}}}
 </aside>

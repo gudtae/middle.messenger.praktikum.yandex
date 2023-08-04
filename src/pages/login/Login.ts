@@ -5,7 +5,7 @@ import { Button } from '../../components/Button/index';
 import { Link } from '../../components/Link';
 import { focusin, focusout, checkRegExp } from '../../core/Validation';
 import AuthController from '../../controllers/AuthController';
-
+import './login.scss';
 
 class Login extends Block {
     constructor() {

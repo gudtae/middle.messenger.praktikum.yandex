@@ -3,10 +3,11 @@ import { IUser } from '../api/AuthAPI';
 import Set from '../Utils/Set';
 import { EventBus } from './EventBus';
 import Block from './Block';
+import { IChatList } from '../api/ChatAPI';
 
 export interface IState {
     user?: IUser,
-    
+    chatList?: { chatList: IChatList[] },
 }
 enum EVENT {
     UPDATE = 'update',

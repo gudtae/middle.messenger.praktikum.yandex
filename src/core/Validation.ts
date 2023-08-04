@@ -48,7 +48,7 @@ export const checkRegExp = (label: string, value: string): string => {
         }
     }
     if (label === 'display_name') {
-        if (!REGEXP.name.test(value)) {
+        if (!REGEXP.login.test(value)) {
             return ERROR_MESSAGES.DNAME;
         }
     }

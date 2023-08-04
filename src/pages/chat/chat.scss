@@ -1,3 +1,5 @@
+@import '../../style/variables';
+
 .chat_main {
     display: grid;
     grid-template-columns: 400px 1fr;
@@ -17,7 +19,7 @@
         top: -1px;
         background-color: $primary-color;
 
-        .link_profile{
+        .link_profile {
             width: 30px;
             height: 30px;
             background-color: transparent;
@@ -28,16 +30,16 @@
         input {
             margin: 5px;
         }
-    }
 
-    .chat_overflow {
-        overflow: overlay;
-        height: 100%;
+        .chat_add_chat {
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            cursor: pointer;
+            background-repeat: no-repeat;
+            background-image: url('data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%2020%2020%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%20%3Cpath%20fill%3D%22%233369F3%22%20fill-rule%3D%22evenodd%22%20d%3D%22M10%203a7%207%200%20100%2014%207%207%200%20000-14zm-9%207a9%209%200%201118%200%209%209%200%2001-18%200zm14%20.069a1%201%200%2001-1%201h-2.931V14a1%201%200%2011-2%200v-2.931H6a1%201%200%20110-2h3.069V6a1%201%200%20112%200v3.069H14a1%201%200%20011%201z%22%3E%3C%2Fpath%3E%20%3C%2Fg%3E%3C%2Fsvg%3E');
+        }
     }
-}
-
-.chat_list::-webkit-scrollbar {
-    display: none;
 }
 
 .chat_search_input {
@@ -49,39 +51,6 @@
     font-size: 1rem;
     margin: 10px 20px 10px 0;
 
-}
-
-.chat_list_li {
-    height: 60px;
-    box-shadow: $box-shadow;
-    display: grid;
-    grid-template-columns: 1fr 9fr 1fr;
-    align-items: center;
-}
-
-.chat_message_info {
-    padding-left: 10px;
-}
-
-.text_color_light {
-    color: $text-color;
-    font-size: 15px;
-}
-
-.chat_message_date {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.chat_counter {
-    background-color: $links-color;
-    border-radius: 50%;
-    color: #fff;
-    text-align: center;
-    width: 50%;
-    padding: 2px;
-    font-size: 1rem;
 }
 
 .chat_section {
@@ -97,6 +66,8 @@
         z-index: 10;
     }
 }
+
+// отсюда все в другой файл
 
 .chat_navigation {
     display: flex;
@@ -213,12 +184,7 @@
     background-color: transparent;
 }
 
-.btn_send_img {
-    background-color: $button-color;
-    border-radius: 10%;
-    width: 30px;
-    padding: 3px;
-}
+
 
 .chat_message_input {
     width: 100%;

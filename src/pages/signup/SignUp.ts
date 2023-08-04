@@ -6,6 +6,7 @@ import { Link } from '../../components/Link/index';
 import { checkRegExp, focusin, focusout} from '../../core/Validation';
 import AuthController from '../../controllers/AuthController';
 import { isEqual } from '../../Utils/IsEqual';
+import './signup.scss';
 
 class SignIn extends Block {
     constructor() {

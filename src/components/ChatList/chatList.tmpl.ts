@@ -1,16 +1,20 @@
 import profileIcon from '../../icon/profileIcon.svg';
 export const template = `
-{{#each list}}
+{{#each chatList}}
 <li class="chat_list_li">
-    <img src=${profileIcon} alt="chat logo" width="30px" />
+    {{#if avatar}}
+        <img src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="Аватарка чата" width="30px" height="30px">
+    {{else}}
+        <img src=${profileIcon} alt="Аватарка чата" width="30px" height="30px"/>
+    {{/if}}
     <div class="chat_message_info">
-         <div><b>{{chat_title}}</b></div>
-        <div class="text_color_light">{{last_message}}</div>
+        <div><b>{{title}}</b></div>
+        <div class="text_color_light">{{content}}</div>
     </div>
     <div class="chat_message_date">
-        <p class="text_color_light">{{last_data}}</p>
-        {{#if counter}}
-        <p class="chat_counter">{{counter}}</p>
+        <p class="text_color_light">{{time}}</p>
+        {{#if unread_count}}
+        <p class="chat_counter">{{unread_count}}</p>
         {{/if}}
     </div>
 </li>

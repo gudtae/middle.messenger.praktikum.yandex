@@ -6,7 +6,7 @@ import AuthController from '../../controllers/AuthController';
 import store, { IState, withStore } from '../../core/Store';
 import { ProfileImg } from '../../components/ProfileImg';
 import profileIcon from '../../icon/profileIcon.svg';
-
+import './profile.scss';
 
 class ProfileBase extends Block {
     constructor() {
@@ -16,6 +16,7 @@ class ProfileBase extends Block {
         AuthController.fetchUser();
     }
     protected init(): void {
+        AuthController.fetchUser();
         const user = store.getState().user;
         this.setProps({
             login: user?.login,
@@ -25,14 +26,18 @@ class ProfileBase extends Block {
         });
         const avatar = (user?.avatar == null) ? profileIcon : 'https://ya-praktikum.tech/api/v2/resources' + user?.avatar;
 
-        this.getContent()?.setAttribute('class', 'profile_layout');
+
         this.children.link_to_chat = new Link({
             text: ``,
             to: '/messanger',
             className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
-            path: avatar
+            path: avatar,
+            alt: 'Аватарка пользователя',
+            width: '100px',
+            height: '100px',
+            className: 'user_avatar',
         });
         this.children.link_change_profile = new Link({
             text: 'Изменить данные',
@@ -53,16 +58,15 @@ class ProfileBase extends Block {
                 }
             }
         });
-
     }
     protected render(): DocumentFragment {
-
+        this.getContent()?.setAttribute('class', 'profile_layout');
         return this.compile(template, this.props);
     }
 }
 //https://ya-praktikum.tech/api/v2/resources${res.avatar}
 function mapStateToProps(state: IState) {
-    return {...state.user};
+    return { ...state.user };
 }
 const Profile = withStore(mapStateToProps)(ProfileBase);
 export default Profile;

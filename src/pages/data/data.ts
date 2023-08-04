@@ -1,73 +1,63 @@
 
-export const ProfileData = {
-    profileName: 'VAN',
-    display_name: 'Ваня',
-    email: 'pochta@ya.ru',
-    login: 'ivanovivan',
-    phone: '88005553535',
-    first_name: 'Иван',
-    second_name: 'Иванов',
-    password: 'helloWorld!'
-};
-
 export const ChatData = {
-    list: [{
-        chat_title: 'Андрей',
-        last_message: 'Хотел узнать можешь одолжить деньги?',
-        last_data: '10:49',
-        counter: 2,
+    chatList: [{
+        title: 'Андрей',
+        content: 'Хотел узнать можешь одолжить деньги?',
+        time: '10:49',
+        unread_count: 2,
     },
     {
-        chat_title: 'Киноклуб',
-        last_message: 'Знаю что вы ждали этот анонс...',
-        last_data: '12:00',
-        counter: 0,
+        title: 'Киноклуб',
+        content: 'Знаю что вы ждали этот анонс...',
+        time: '12:00',
+        unread_count: 0,
     },
     {
-        chat_title: 'Илья',
-        last_message: 'Друзья, у меня для вас особенный выпуск новостей!...',
-        last_data: '15:12',
-        counter: 4,
+        title: 'Илья',
+        content: 'Друзья, у меня для вас особенный выпуск новостей!...',
+        time: '15:12',
+        unread_count: 4,
     },
     {
-        chat_title: 'Вадим',
-        last_message: 'Круто',
-        last_data: 'Пт',
-        counter: 0,
+        title: 'Вадим',
+        content: 'Круто',
+        time: 'Пт',
+        unread_count: 0,
     },
     {
-        chat_title: 'тет-а-теты',
-        last_message: 'И хьман интерфейс делает что то новое',
-        last_data: 'Ср',
-        counter: 0,
+        title: 'тет-а-теты',
+        content: 'И хьман интерфейс делает что то новое',
+        time: 'Ср',
+        unread_count: 0,
     },
     {
-        chat_title: '1, 2, 3',
-        last_message: 'Милионы россиян ежедневно проводят десятки часов свое...',
-        last_data: 'Пн',
-        counter: 0,
+        title: '1, 2, 3',
+        content: 'Милионы россиян ежедневно проводят десятки часов свое...',
+        time: 'Пн',
+        unread_count: 0,
     },
     {
-        chat_title: 'Design Destroyer',
-        last_message: 'В 2008 году художник сделал заявление',
-        last_data: 'Пн',
-        counter: 0,
+        title: 'Design Destroyer',
+        content: 'В 2008 году художник сделал заявление',
+        time: 'Пн',
+        unread_count: 0,
     },
     {
-        chat_title: 'Day.',
-        last_message: 'Так увлекся работой по курсу, что совсем все забыл',
-        last_data: '1 мая 2020',
-        counter: 0,
+        title: 'Day.',
+        content: 'Так увлекся работой по курсу, что совсем все забыл',
+        time: '1 мая 2020',
+        unread_count: 0,
     },
     {
-        chat_title: 'Стас Рогозин ',
-        last_message: 'Можно или сегодня или завтра',
-        last_data: '1990',
-        counter: 0,
+        title: 'Стас Рогозин ',
+        content: 'Можно или сегодня или завтра',
+        time: '1990',
+        unread_count: 0,
     }
     ]
 };
+
 export const MessageData = {
-    boolean:  true,
+    boolean: true,
     data: '12 сентября'
 };
