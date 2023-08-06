@@ -12,6 +12,11 @@ class ChatListBase extends Block {
                 click: (e: {target: {id: number}}) => {
                     if (e.target.id){
                         store.set('currentChat', {id: e.target.id});
+                        const selectedChat = document.getElementById(`${e.target.id}`) as HTMLLIElement;
+                        console.log(selectedChat);
+                        if (selectedChat){
+                            selectedChat.setAttribute('class', 'chat_list_li select');
+                        }
                         console.log(store.getState());
                     }
                 }
