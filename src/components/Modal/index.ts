@@ -42,6 +42,7 @@ class Modal extends Block {
                         } else {
                             ChatController.createChat(children.value);
                             this.hide();
+                            children.value = '';
                         }
                     }
                 }
