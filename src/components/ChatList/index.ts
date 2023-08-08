@@ -9,15 +9,14 @@ class ChatListBase extends Block {
         super('ul', {
             ...props,
             events: {
-                click: (e: {target: {id: number}}) => {
+                click: async (e: {target: {id: number}}) => {
                     if (e.target.id){
                         store.set('currentChat', {id: e.target.id});
+                        await ChatController.getChatUsers(e.target.id);
                         const selectedChat = document.getElementById(`${e.target.id}`) as HTMLLIElement;
-                        console.log(selectedChat);
                         if (selectedChat){
                             selectedChat.setAttribute('class', 'chat_list_li select');
                         }
-                        console.log(store.getState());
                     }
                 }
             }
@@ -26,7 +25,6 @@ class ChatListBase extends Block {
     }
     protected init(): void {
         ChatController.getChats();
-        console.log(store.getState());
     }
     protected render(): DocumentFragment {
         this.getContent()?.setAttribute('class', 'chat_overflow');

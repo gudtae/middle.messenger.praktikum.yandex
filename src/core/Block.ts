@@ -14,7 +14,6 @@ enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ObjectType = Record<string, any>;
 
 
@@ -97,10 +96,8 @@ class Block implements IBlock {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     protected init(): void { }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     componentDidMount(): void {}
 
     _componentDidMount() {

@@ -10,6 +10,7 @@ import modalDelete from '../ModalDelete';
 import ModalAddUser from '../ModalAddUser';
 import ModalDelUser from '../ModalDelUser';
 
+
 class ChatMessageBase extends Block {
     constructor(){
         super('section', {});
@@ -18,8 +19,8 @@ class ChatMessageBase extends Block {
     protected init(): void {
         this.getContent()?.setAttribute('class', 'chat_section');
         this.children.modalDeleteChat = new modalDelete();
-        this.children.modalAddUser = new ModalAddUser();
-        this.children.modalDeleteUser = new ModalDelUser();
+        this.children.modalAddUser = new ModalAddUser({});
+        this.children.modalDeleteUser = new ModalDelUser({});
         this.children.buttonAddUser = new Button({
             text: '',
             className: 'chat_add_user',

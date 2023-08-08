@@ -16,6 +16,10 @@ class Modal extends Block {
             className: 'modal_close',
             events: {
                 click: () => {
+                    const children = document.querySelector('input');
+                    if (children) {
+                        children.value = '';
+                    }
                     this.hide();
                 }
             }

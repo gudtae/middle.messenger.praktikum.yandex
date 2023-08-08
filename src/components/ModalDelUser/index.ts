@@ -1,14 +1,24 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Block from '../../core/Block';
 import template from './modal.tmpl';
-// import './modal.scss';
 import { Button } from '../Button';
-import { InputError } from '../InputError';
-import { ERROR_MESSAGES, focusout } from '../../core/Validation';
-// import ChatController from '../../controllers/ChatController';
+import store, { IState, withStore } from '../../core/Store';
+import ChatController from '../../controllers/ChatController';
 
-class ModalDelUser extends Block {
-    constructor() {
-        super('div');
+class ModalDelUserBase extends Block {
+    constructor(props = {}) {
+        super('div', {
+            ...props, events: {
+                click: (e: any) => {
+                    if (e.target.nodeName == 'DIV') {
+                        store.set('delUser', { id: e.target.id });
+                        this.setProps({
+                            info: 'Нажмите кнопку для удаления из чата'
+                        });
+                    }
+                }
+            }
+        });
     }
     protected init(): void {
         this.getContent()?.setAttribute('class', 'modal');
@@ -18,32 +28,32 @@ class ModalDelUser extends Block {
             events: {
                 click: () => {
                     this.hide();
+                    this.setProps({
+                        error: ''
+                    });
                 }
             }
         });
-        this.children.input = new InputError({
-            labelFor: 'addUser',
-            inputType: 'text',
-            inputName: 'addUser',
-            class: 'modal_input',
-            placeholder: 'Введите логин пользователя',
-            events: {
-                focusout
-            }
-        });
         this.children.buttonSubmit = new Button({
-            text: 'Найти',
+            text: 'Удалить',
+            className: 'modal_delete_chat',
             events: {
                 click: () => {
-                    const children = document.querySelector('input');
-                    if (children) {
-                        const error = children.parentElement?.querySelector('.red_error') as HTMLDivElement;
-                        if (children.value === '') {
-                            error.textContent = ERROR_MESSAGES.EMPTY;
-                        } else {
-                            
-                            this.hide();
-                        }
+                    this.setProps({
+                        error: ''
+                    });
+                    const chat = store.getState().currentChat?.id;
+                    const user = store.getState().delUser?.id;
+                    if (chat && user) {
+                        ChatController.deleteUser({ users: [user], chatId: chat });
+                        this.hide();
+                        this.setProps({
+                            error: ''
+                        });
+                    } else {
+                        this.setProps({
+                            error: 'Произошла ошибка'
+                        });
                     }
                 }
             }
@@ -53,4 +63,8 @@ class ModalDelUser extends Block {
         return this.compile(template, { ...this.props });
     }
 }
+function mapStateToProps(state: IState) {
+    return { ...state.chatUsers };
+}
+const ModalDelUser = withStore(mapStateToProps)(ModalDelUserBase);
 export default ModalDelUser;
