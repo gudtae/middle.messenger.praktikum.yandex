@@ -80,6 +80,7 @@ class ModalAddUserBase extends Block {
                         ChatController.addUser({ users: [user], chatId: chat });
                         console.log(store.getState());
                         this.hide();
+                       
                         this.setProps({
                             error: ''
                         });
@@ -88,7 +89,7 @@ class ModalAddUserBase extends Block {
                             error: 'Введите логин пользователя'
                         });
                     }
-
+                    store.set('users', { users: [] });
                 }
             }
         });

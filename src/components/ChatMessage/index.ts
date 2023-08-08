@@ -69,7 +69,7 @@ class ChatMessageBase extends Block {
     }
 }
 function mapStateToProps(state: IState){
-    return {...state.chatMessage};
+    return {...state.currentChat};
 }
 const ChatMessage = withStore(mapStateToProps)(ChatMessageBase);
 export default ChatMessage;

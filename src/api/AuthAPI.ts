@@ -23,7 +23,7 @@ export interface IUser {
     display_name: string;
     login: string;
     avatar: string;
-    phone: string;
+    phone?: string;
 }
 
 export class AuthAPI extends BaseAPI {

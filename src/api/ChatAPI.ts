@@ -17,6 +17,7 @@ export interface IChatList {
         }
 }
 
+
 export class ChatAPI extends BaseAPI {
     constructor() {
         super('/chats');
@@ -39,6 +40,9 @@ export class ChatAPI extends BaseAPI {
     }
     deleteUser(data: {users: [number], chatId: number}): Promise<void> {
         return this.http.delete('/users', JSON.stringify(data));
+    }
+    token(id: number): Promise<{token: string}> {
+        return this.http.post(`/token/${id}`);
     }
 
 }

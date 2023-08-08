@@ -9,21 +9,12 @@ import profileIcon from '../../icon/profileIcon.svg';
 import './profile.scss';
 
 class ProfileBase extends Block {
-    constructor() {
-        super('main');
-    }
-    componentDidMount(): void {
-        AuthController.fetchUser();
+    constructor(props = {}) {
+        super('main', {...props});
     }
     protected init(): void {
         AuthController.fetchUser();
         const user = store.getState().user;
-        this.setProps({
-            login: user?.login,
-            first_name: user?.first_name,
-            second_name: user?.second_name,
-            display_name: user?.display_name,
-        });
         const avatar = (user?.avatar == null) ? profileIcon : 'https://ya-praktikum.tech/api/v2/resources' + user?.avatar;
 
 

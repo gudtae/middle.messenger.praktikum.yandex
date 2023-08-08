@@ -10,7 +10,7 @@ export interface IState {
     user?: IUser,
     chatList?: { chatList: IChatList[] },
     chatMessage?: {chatMessage: string},
-    currentChat?: {id: number | undefined },
+    currentChat?: {id: number | undefined, title: string},
     users?: {users: IResponse[]},
     addUser?: {id: number | undefined },
     delUser?: {id: number | undefined },
@@ -21,7 +21,7 @@ enum EVENT {
 }
 class Storage extends EventBus {
     _state: IState = {
-        currentChat: {id: undefined},
+        currentChat: {id: undefined, title: ''},
     };
 
     getState() {
