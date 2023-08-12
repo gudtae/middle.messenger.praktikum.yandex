@@ -1,2 +1,2 @@
-const template = `<img src={{path}} alt="Аватарка пользователя" width="100px" class="user_avatar"/>`;
+const template = `<img src={{path}} alt={{alt}} width={{width}} height={{height}} class={{className}} />`;
 export default template ;

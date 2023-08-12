@@ -1,3 +1,5 @@
+@import '../../style/variables';
+
 .profile_layout {
     display: grid;
     grid-template-columns: 40px minmax(600px, max-content);
@@ -22,17 +24,17 @@
 
 }
 
-.profile_user_flex {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    padding: 4px 0;
-
-}
-
 .profile_user_data {
     display: flex;
     flex-direction: column;
+
+    .profile_user_flex {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        padding: 4px 0;
+
+    }
 
     .profile_user_flex:not(:last-child) {
         box-shadow: $box-shadow;
@@ -40,14 +42,11 @@
 
 }
 
-
 .profile_link {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-
 
     .link {
         padding: 5px 0 10px;
@@ -61,7 +60,7 @@
     }
 }
 
-.link_img{
+.link_img {
     width: 50px;
     height: 50px;
     background-image: url("data:image/svg+xml, %3Csvg%20viewBox%3D%22-2.4%20-2.4%2028.80%2028.80%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20stroke%3D%22%23ffffff%22%3E%3Cg%20id%3D%22SVGRepo_bgCarrier%22%20stroke-width%3D%220%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_tracerCarrier%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke%3D%22%238c8c8c%22%20stroke-width%3D%220.528%22%3E%3C%2Fg%3E%3Cg%20id%3D%22SVGRepo_iconCarrier%22%3E%20%3Cpath%20d%3D%22M9%2022H15C20%2022%2022%2020%2022%2015V9C22%204%2020%202%2015%202H9C4%202%202%204%202%209V15C2%2020%204%2022%209%2022Z%22%20stroke%3D%22%23EAEAEA%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%20%3Cpath%20d%3D%22M9.00002%2015.3802H13.92C15.62%2015.3802%2017%2014.0002%2017%2012.3002C17%2010.6002%2015.62%209.22021%2013.92%209.22021H7.15002%22%20stroke%3D%22%23EAEAEA%22%20stroke-width%3D%221.5%22%20stroke-miterlimit%3D%2210%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%20%3Cpath%20d%3D%22M8.57%2010.7701L7%209.19012L8.57%207.62012%22%20stroke%3D%22%23EAEAEA%22%20stroke-width%3D%221.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3C%2Fpath%3E%20%3C%2Fg%3E%3C%2Fsvg%3E%0A");

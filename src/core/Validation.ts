@@ -1,4 +1,4 @@
-const ERROR_MESSAGES = {
+export const ERROR_MESSAGES = {
     LOGIN: 'Логин от 3 до 20 символов латинского алфавита с цифрами (можно дефис)',
     PASSWORD: 'Пароль от 8 до 40 символов латинского алфавита как минимум с одной заглавной и строчной буквой, и цифрой',
     FNAME: 'Имя должно быть с заглавной буквы, без пробелов и без цифр, можно дефис',
@@ -48,7 +48,7 @@ export const checkRegExp = (label: string, value: string): string => {
         }
     }
     if (label === 'display_name') {
-        if (!REGEXP.name.test(value)) {
+        if (!REGEXP.login.test(value)) {
             return ERROR_MESSAGES.DNAME;
         }
     }

@@ -3,6 +3,10 @@ import Block from '../../core/Block';
 
 interface ProfileImgProps {
     path: string;
+    alt: string;
+    width: string;
+    height: string;
+    className: string;
 }
 
 export class ProfileImg extends Block {

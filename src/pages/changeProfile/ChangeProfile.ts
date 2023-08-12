@@ -11,6 +11,7 @@ import AuthController from '../../controllers/AuthController';
 import UserController from '../../controllers/UserController';
 import store, { IState, withStore } from '../../core/Store';
 import Router from '../../core/Router';
+import './changeProfile.scss';
 
 class ChangeProfileBase extends Block {
     constructor() {
@@ -34,7 +35,11 @@ class ChangeProfileBase extends Block {
             className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
-            path: avatar
+            path: avatar,
+            alt: 'Аватарка пользователя',
+            width: '100px',
+            height: '100px',
+            className: 'user_avatar',
         });
         this.children.input_avatar = new InputError({
             labelFor: 'avatar',

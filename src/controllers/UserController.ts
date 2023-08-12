@@ -45,7 +45,8 @@ class UserController {
     }
     async searchUser(login: string) {
         try {
-            await this.api.searchUser(login);
+            const searchResult = await this.api.searchUser(login);
+            store.set('users',{users: searchResult});
         } catch (error) {
             console.log(error);
         }

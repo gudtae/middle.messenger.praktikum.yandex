@@ -16,13 +16,14 @@ export interface IPassword {
 export interface IGet{
     id: number
 }
-export interface IResponce {
+export interface IResponse {
     id: number,
     first_name: string,
     second_name: string,
     display_name: string,
     login: string,
-    avatar: string
+    avatar: string,
+    role?: string
 }
 
 export class UserAPI extends BaseAPI {
@@ -32,16 +33,16 @@ export class UserAPI extends BaseAPI {
     changeProfile(data: IProfile): Promise<IUser>{
         return this.http.put('/profile', JSON.stringify(data));
     }
-    changeAvatar(file: FormData): Promise<IResponce>{
+    changeAvatar(file: FormData): Promise<IResponse>{
         return this.http.put('/profile/avatar', file);
     }
     changePassword(data: IPassword): Promise<void>{
         return this.http.put('/password', JSON.stringify(data));
     }
-    getUser(id: IGet): Promise<IResponce>{
+    getUser(id: IGet): Promise<IResponse>{
         return this.http.get(`${id.id}`);
     }
-    searchUser(login: string): Promise<IResponce[]>{
+    searchUser(login: string): Promise<IResponse[]>{
         return this.http.post('/search', JSON.stringify({login}));
     }
 }

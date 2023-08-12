@@ -1,5 +1,6 @@
 import Block from '../../core/Block';
 import { template } from './buttonImg.tmpl';
+import './buttonImg.scss';
 
 interface ButtonProps {
     events?: { [key: string]: (...args: never) => void }

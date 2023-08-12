@@ -25,7 +25,11 @@ class ChangePasswordBase extends Block {
             className: 'link_img',
         });
         this.children.profile_img = new ProfileImg({
-            path: avatar
+            path: avatar,
+            alt: 'Аватарка пользователя',
+            width: '100px',
+            height: '100px',
+            className: 'user_avatar',
         });
         this.children.old_password = new InputError({
             labelFor: 'oldPassword',

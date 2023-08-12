@@ -1,9 +1,8 @@
 const template = `
-  <div class="modal_content">
+<div class="modal_content modal_delete">
     {{{buttonClose}}}
-    {{{input}}}
-    {{error}}
+    <div class='modal_error'></div>
     {{{buttonSubmit}}}
-  </div>
+</div>
 `;
 export default template;

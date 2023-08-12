@@ -14,7 +14,6 @@ enum EVENTS {
     FLOW_CDU = 'flow:component-did-update',
     FLOW_RENDER = 'flow:render'
 }
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ObjectType = Record<string, any>;
 
 
@@ -97,11 +96,9 @@ class Block implements IBlock {
         this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     protected init(): void { }
 
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    componentDidMount(): void {}
+    componentDidMount(): void { }
 
     _componentDidMount() {
         this.componentDidMount();
@@ -158,13 +155,13 @@ class Block implements IBlock {
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
             if (!stub) return;
-
             component.getContent()?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent());
         });
 
         return temp.content;
     }
+
     protected render() {
         return this.compile('', {});
     }
@@ -214,3 +211,4 @@ class Block implements IBlock {
 }
 
 export default Block;
+

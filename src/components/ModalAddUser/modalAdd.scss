@@ -1,0 +1,46 @@
+@import '../../style/variables';
+
+.modal_content ul{
+    margin-top: 50px;
+}
+
+.user_add_list{
+    position: relative;
+    
+    .user_add_button{
+        opacity:0;
+        position:absolute;
+        bottom:0;
+        left:50%;
+        transform:translate(-50%, 0);
+        transition: 0.5s;
+        width:98%;
+        height: 100%;
+        font-size:14px;
+        padding:5px;
+        color:$links-color;
+        background-color: $select-color;
+    }
+}
+
+.user_add_blur{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    img{
+        border-radius: 50%;
+    }
+}
+
+.user_add_list:hover .user_add_button{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.red_bg{
+    background-color: $dangerous-color;
+    color: white;
+}
+
