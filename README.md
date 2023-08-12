@@ -29,4 +29,4 @@
 
 [Sprint 2](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/2#issue-1778638810) 
 
-Sprint 3 когда нибудь тут будет ссылка :'(
+[Sprint 3](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/3#issue-1848062740)
