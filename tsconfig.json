@@ -7,7 +7,7 @@
       "ESNext",
       "DOM",
     ],
-    "moduleResolution": "Node",
+    "moduleResolution": "nodenext",
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
