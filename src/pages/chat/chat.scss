@@ -67,8 +67,6 @@
     }
 }
 
-// отсюда все в другой файл
-
 .chat_navigation {
     display: flex;
     justify-content: space-between;
@@ -104,6 +102,8 @@
     display: flex;
     flex-direction: column;
     padding-top: 50px;
+    height: 100%;
+    overflow-y: scroll;
 
     .text_color_light {
         text-align: center;
@@ -111,7 +111,7 @@
 
 
 
-    .chat_send_to_me {
+    .chat_send {
         background-color: #fff;
         margin: 10px;
         width: 50%;
@@ -119,32 +119,16 @@
         padding: 10px;
         position: relative;
 
-        span {
+        div {
             font-size: 14px;
             color: $text-color;
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
+            
         }
     }
+}
 
-    .chat_send_by_me {
-        background-color: $select-color;
-        margin: 10px;
-        width: fit-content;
-        border-radius: 15px 15px 0;
-        padding: 10px 50px 10px 10px;
-        align-self: end;
-        position: relative;
-
-        span {
-            font-size: 14px;
-            color: $text-color;
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-        }
-    }
+.chat_message_list::-webkit-scrollbar {
+    display: none;
 }
 
 .send_file {

@@ -78,7 +78,6 @@ class ModalAddUserBase extends Block {
                     const user = store.getState().addUser?.id;
                     if (chat && user) {
                         ChatController.addUser({ users: [user], chatId: chat });
-                        console.log(store.getState());
                         this.hide();
                        
                         this.setProps({

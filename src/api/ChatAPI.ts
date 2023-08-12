@@ -1,22 +1,22 @@
 import { BaseAPI } from './BaseAPI';
 import { IResponse } from './UserAPI';
+
 export interface IChatList {
         id: number,
         title: string
         avatar: string,
         unread_count: number,
         last_message: {
+            content: string,
+            time: string,
             user: {
                 first_name: string,
                 second_name: string,
                 avatar: string,
                 login: string,
             },
-        time: string,
-        content: string
         }
 }
-
 
 export class ChatAPI extends BaseAPI {
     constructor() {
@@ -44,5 +44,4 @@ export class ChatAPI extends BaseAPI {
     token(id: number): Promise<{token: string}> {
         return this.http.post(`/token/${id}`);
     }
-
 }

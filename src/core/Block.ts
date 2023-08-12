@@ -98,7 +98,7 @@ class Block implements IBlock {
 
     protected init(): void { }
 
-    componentDidMount(): void {}
+    componentDidMount(): void { }
 
     _componentDidMount() {
         this.componentDidMount();
@@ -155,13 +155,13 @@ class Block implements IBlock {
         Object.entries(this.children).forEach(([_, component]) => {
             const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
             if (!stub) return;
-
             component.getContent()?.append(...Array.from(stub.childNodes));
             stub.replaceWith(component.getContent());
         });
 
         return temp.content;
     }
+
     protected render() {
         return this.compile('', {});
     }
@@ -211,3 +211,4 @@ class Block implements IBlock {
 }
 
 export default Block;
+

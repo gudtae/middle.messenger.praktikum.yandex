@@ -5,24 +5,26 @@ import { EventBus } from './EventBus';
 import Block from './Block';
 import { IChatList } from '../api/ChatAPI';
 import { IResponse } from '../api/UserAPI';
+import { IChatMessage } from './Socket';
 
 export interface IState {
     user?: IUser,
     chatList?: { chatList: IChatList[] },
-    chatMessage?: {chatMessage: string},
-    currentChat?: {id: number | undefined, title: string},
-    users?: {users: IResponse[]},
-    addUser?: {id: number | undefined },
-    delUser?: {id: number | undefined },
-    chatUsers?: {chatUsers: IResponse[]},
+    messages?: { messages: IChatMessage[] },
+    currentChat?: { id: number | undefined, title: string, token: string },
+    users?: { users: IResponse[] },
+    addUser?: { id: number | undefined },
+    delUser?: { id: number | undefined },
+    chatUsers?: { chatUsers: IResponse[] },
 }
 enum EVENT {
     UPDATE = 'update',
 }
 class Storage extends EventBus {
     _state: IState = {
-        currentChat: {id: undefined, title: ''},
+        currentChat: { id: undefined, title: '', token: '' },
     };
+
 
     getState() {
         return this._state;

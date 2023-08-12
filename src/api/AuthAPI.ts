@@ -1,6 +1,5 @@
 import { BaseAPI } from './BaseAPI';
 
-
 export interface ISignUpData {
     first_name: string;
     second_name: string;

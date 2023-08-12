@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Block from '../../core/Block';
 import { template } from './chatList.tmpl';
 import store, { IState, withStore } from '../../core/Store';
 import ChatController from '../../controllers/ChatController';
 import './chatList.scss';
+import controller from '../../core/Socket';
 
 class ChatListBase extends Block {
     constructor(props = {}) {
@@ -11,10 +13,13 @@ class ChatListBase extends Block {
             events: {
                 click: async (e: { target: { id: number } }) => {
                     if (e.target.id) {
+                        controller.stop();
                         const idChat = e.target.id;
-                        const currentChatTitle = getChatTitleById(+idChat);
 
+                        const currentChatTitle = getChatTitleById(+idChat);
                         store.set('currentChat', { id: +idChat, title: currentChatTitle });
+                        store.set('messages', { messages: [] });
+                        await ChatController.token(+idChat);
 
                         await ChatController.getChatUsers(e.target.id);
 

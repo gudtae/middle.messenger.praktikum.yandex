@@ -1,6 +1,7 @@
 import { ChatAPI, IChatList } from '../api/ChatAPI';
 import { IResponse } from '../api/UserAPI';
 import store from '../core/Store';
+import controller from '../core/Socket';
 
 class ChatController {
     private api = new ChatAPI();
@@ -14,7 +15,7 @@ class ChatController {
         }
     }
     async getChatUsers(id: number) {
-        try{
+        try {
             const chatUsers = await this.api.getChatUsers(id) as IResponse[];
             store.set('chatUsers', { chatUsers: chatUsers });
         } catch (error) {
@@ -52,6 +53,19 @@ class ChatController {
         try {
             await this.api.deleteUser(data);
             this.getChatUsers(data.chatId);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    async token(id: number) {
+        try {
+            const token = await this.api.token(id);
+            store.set('currentChat', token);
+            const userId = store.getState().user?.id;
+            if (userId) {
+                controller.connect(+userId, +id, token.token );
+            }
+
         } catch (error) {
             console.log(error);
         }

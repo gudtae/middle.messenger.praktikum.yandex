@@ -72,7 +72,6 @@ const onSubmit = (event: Event): void => {
 
     if (Object.keys(data).length === children.length) {
         AuthController.signin(data);
-        console.log(data);
     }
 };
 export default Login;

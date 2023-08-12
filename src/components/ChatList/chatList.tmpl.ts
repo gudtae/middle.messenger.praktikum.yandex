@@ -9,10 +9,10 @@ export const template = `
     {{/if}}
     <div class="chat_message_info">
         <div><b>{{title}}</b></div>
-        <div class="text_color_light">{{content}}</div>
+        <div class="text_color_light">{{last_message.content}}</div>
     </div>
     <div class="chat_message_date">
-        <p class="text_color_light">{{time}}</p>
+        <p class="text_color_light">{{last_message.time}}</p>
         {{#if unread_count}}
         <p class="chat_counter">{{unread_count}}</p>
         {{/if}}

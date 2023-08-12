@@ -126,7 +126,7 @@ const onSubmit = (event: Event): void => {
     if (Object.keys(data).length === children.length) {
         if (isEqual(data.password, data.password_again)) {
             AuthController.signup(data);
-            console.log(data);
+
         } else {
             const error = document.querySelectorAll('.red_error')[6] as HTMLDivElement;
             error.textContent = 'Пароли не совпадают';

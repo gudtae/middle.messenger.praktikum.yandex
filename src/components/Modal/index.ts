@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { InputError } from '../InputError';
 import { ERROR_MESSAGES, focusout } from '../../core/Validation';
 import ChatController from '../../controllers/ChatController';
+
 class Modal extends Block {
     constructor() {
         super('div');
