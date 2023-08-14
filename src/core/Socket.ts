@@ -80,8 +80,8 @@ class WSTransport {
         }
     }
     message(e: MessageEvent) {
-        const message = JSON.parse(e.data);
         try {
+            const message = JSON.parse(e.data);
             if (message.type && message.type === 'pong') {
                 return;
             }
