@@ -33,7 +33,6 @@ class ChatController {
     async deleteChat(id: number) {
         try {
             await this.api.deleteChat({ chatId: id });
-            this.getChats();
         } catch (error) {
             console.log(error);
         }
