@@ -70,16 +70,20 @@ class ModalAddUserBase extends Block {
         this.children.buttonAddUser = new Button({
             text: 'добавить',
             events: {
-                click: () => {
+                click: async() => {
                     this.setProps({
                         error: ''
                     });
                     const chat = store.getState().currentChat?.id;
                     const user = store.getState().addUser?.id;
                     if (chat && user) {
-                        ChatController.addUser({ users: [user], chatId: chat });
+                        await ChatController.addUser({ users: [user], chatId: chat });
+                        ChatController.getChatUsers(chat);
                         this.hide();
-                       
+                        const children = document.querySelector('input#addUser') as HTMLInputElement;
+                        if (children) {
+                            children.value = '';
+                        }
                         this.setProps({
                             error: ''
                         });
