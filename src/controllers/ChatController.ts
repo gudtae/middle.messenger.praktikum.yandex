@@ -25,6 +25,7 @@ class ChatController {
     async createChat(title: string) {
         try {
             await this.api.newChat(title);
+            this.getChats();
         } catch (error) {
             console.log(error);
         }

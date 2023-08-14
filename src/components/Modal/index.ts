@@ -48,6 +48,8 @@ class Modal extends Block {
                             ChatController.createChat(children.value);
                             this.hide();
                             children.value = '';
+                            
+                            ChatController.getChats();
                         }
                     }
                 }
