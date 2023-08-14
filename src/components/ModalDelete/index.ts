@@ -25,12 +25,14 @@ class modalDelete extends Block {
             text: 'Удалить чат',
             className: 'modal_delete_chat',
             events: {
-                click: () => {
+                click: async () => {
                     const id = store.getState().currentChat?.id;
                     const error = document.querySelector('.modal_error') as HTMLDivElement;
                     error.textContent = '';
                     if (id) {
-                        ChatController.deleteChat(id);
+                        await ChatController.deleteChat(id);
+                        await ChatController.getChats();
+                        store.set('currentChat', { id: undefined, title: '' });
                         this.hide();
                     }
                     else {

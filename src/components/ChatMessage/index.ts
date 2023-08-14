@@ -63,11 +63,13 @@ class ChatMessageBase extends Block {
                         const child = document.querySelector('input#message') as HTMLInputElement;
                         if (child) {
                             const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
-                            if (child.value === '') {
+                            const msgToSend = child.value.trim();
+                            if (msgToSend === '') {
                                 error.textContent = ERROR_MESSAGES.EMPTY;
+                                child.value = '';
                             } else {
                                 error.textContent = '';
-                                controller.send(child.value);
+                                controller.send(msgToSend);
                                 child.value = '';
                             }
                         }
@@ -83,19 +85,21 @@ class ChatMessageBase extends Block {
                     const child = document.querySelector('input#message') as HTMLInputElement;
                     if (child) {
                         const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
-                        if (child.value === '') {
+                        const msgToSend = child.value.trim();
+                        if (msgToSend === '') {
                             error.textContent = ERROR_MESSAGES.EMPTY;
+                            child.value = '';
                         } else {
                             error.textContent = '';
-                            controller.send(child.value);
+                            controller.send(msgToSend);
                             child.value = '';
                         }
                     }
                 },
             }
         });
-        
-        
+
+
     }
     protected render(): DocumentFragment {
         return this.compile(template, this.props);
