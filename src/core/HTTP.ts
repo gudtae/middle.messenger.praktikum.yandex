@@ -34,24 +34,24 @@ export class HTTPTransport {
         if (data) {
             url += queryStringify(data);
         }
-        return this.request<Response>(url, { method: METHODS.GET });
+        return this.request(url, { method: METHODS.GET });
     }
     public post<Response = void>(path: string, data?: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request(this.endpoint + path, {
             method: METHODS.POST,
             data,
         });
     }
 
     public put<Response = void>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request(this.endpoint + path, {
             method: METHODS.PUT,
             data,
         });
     }
 
     public delete<Response>(path: string, data: unknown): Promise<Response> {
-        return this.request<Response>(this.endpoint + path, {
+        return this.request(this.endpoint + path, {
             method: METHODS.DELETE,
             data,
         });

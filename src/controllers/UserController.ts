@@ -27,8 +27,8 @@ class UserController {
     }
     async changeAvatar(file: FormData) {
         try {
-            await this.api.changeAvatar(file);
-            store.set('user.avatar', file);
+            const newAvatar = await this.api.changeAvatar(file);
+            store.set('user.avatar', newAvatar.avatar);
             AuthController.fetchUser();
             Router.go('/settings');
         } catch (error) {
