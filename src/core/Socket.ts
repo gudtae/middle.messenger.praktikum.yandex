@@ -61,7 +61,7 @@ class WSTransport {
             console.log('хьюстон у нас проблемы');
         }
     }
-    stop(){
+    stop() {
         if (this.socket) {
             clearInterval(this.pingInterval);
             this.socket.close();
@@ -82,20 +82,22 @@ class WSTransport {
     message(e: MessageEvent) {
         try {
             const message = JSON.parse(e.data);
-            if (message.type && message.type === 'pong') {
+            if (!Array.isArray(message) && message.type !== 'message') {
                 return;
-            }
-            const currentMessages = (store.getState().messages?.messages || []).reverse();
-            
-            if (Array.isArray(message)) {
-                const rev = message.reverse();
-                const updatedMessages = [...currentMessages, ...rev];
-                store.set('messages', { messages: updatedMessages });
             } else {
-                const updatedMessages = [...currentMessages, message];
-                store.set('messages', { messages: updatedMessages });
+                const currentMessages = (store.getState().messages?.messages || []);
+
+                if (Array.isArray(message)) {
+                    const rev = message.reverse();
+                    const updatedMessages = [...currentMessages, ...rev];
+                    store.set('messages', { messages: updatedMessages });
+                } else {
+                    const updatedMessages = [...currentMessages, message];
+                    store.set('messages', { messages: updatedMessages });
+                }
+                ChatController.getChats();
             }
-            ChatController.getChats();
+
         } catch (e) {
             console.log(e);
         }
