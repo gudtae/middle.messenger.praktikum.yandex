@@ -9,7 +9,7 @@ const template = `
         {{{input_password}}}
         {{{input_password_again}}}
         {{{button}}}
-        <a href="/" class="link">уже есть аккаунт?</a>
+        {{{link}}}
     </form>
 `;
 export default template ;

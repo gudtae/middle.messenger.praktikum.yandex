@@ -1,4 +1,4 @@
-const ERROR_MESSAGES = {
+export const ERROR_MESSAGES = {
     LOGIN: 'Логин от 3 до 20 символов латинского алфавита с цифрами (можно дефис)',
     PASSWORD: 'Пароль от 8 до 40 символов латинского алфавита как минимум с одной заглавной и строчной буквой, и цифрой',
     FNAME: 'Имя должно быть с заглавной буквы, без пробелов и без цифр, можно дефис',
@@ -18,7 +18,7 @@ const REGEXP = {
     message: /^\s*$/,
 };
 
-const checkRegExp = (label: string, value: string): string => {
+export const checkRegExp = (label: string, value: string): string => {
     if (value === '') {
         return ERROR_MESSAGES.EMPTY;
     }
@@ -48,7 +48,7 @@ const checkRegExp = (label: string, value: string): string => {
         }
     }
     if (label === 'display_name') {
-        if (!REGEXP.name.test(value)) {
+        if (!REGEXP.login.test(value)) {
             return ERROR_MESSAGES.DNAME;
         }
     }
@@ -57,12 +57,14 @@ const checkRegExp = (label: string, value: string): string => {
             return ERROR_MESSAGES.EMAIL;
         }
     }
-    // if (label === 'message') {
-    //     if (!REGEXP.message.test(value)) {
-    //         return ERROR_MESSAGES.EMPTY;
-    //     }
-    // }
     return '';
+};
+export const checkPassword = (): boolean => {
+    const newPassword = document.getElementById('new_password') as HTMLInputElement;
+    const repeatPassword = document.getElementById('repeat_password') as HTMLInputElement;
+    const newPValue = newPassword.value;
+    const repeatPValue = repeatPassword.value;
+    return newPValue === repeatPValue;
 };
 
 export const checkInputs = (event: HTMLInputElement): boolean => {
@@ -83,7 +85,7 @@ export const focusout = (event: InputEvent): void => {
     checkInputs(event.target as HTMLInputElement);
 };
 
-export const submit = (event: Event): void => {
+export const submit = (event: Event) => {
     event.preventDefault();
     const children = document.querySelectorAll('input');
     const data: Record<string, string> = {};

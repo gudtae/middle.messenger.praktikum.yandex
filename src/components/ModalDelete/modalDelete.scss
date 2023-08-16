@@ -1,0 +1,21 @@
+@import '../../style/variables';
+
+.modal_delete{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal_delete_chat{
+    background-color: $dangerous-color;
+    color: white;
+    width: 50%;
+    height: calc(2rem + 2px);
+    border-radius: 10px;
+}
+
+.modal_error{
+    color: $dangerous-color;
+    font-size: 8px;
+}

@@ -1,17 +1,21 @@
-import template from './signin.tmpl';
-import { Button } from '../../components/Button/index';
+import template from './signup.tmpl';
+import Block from '../../core/Block';
 import { InputError } from '../../components/InputError/index';
-import Block from '../../components/Utils/Block';
-import { focusin, focusout,submit } from '../../components/Utils/Validation';
+import { Button } from '../../components/Button/index';
+import { Link } from '../../components/Link/index';
+import { checkRegExp, focusin, focusout} from '../../core/Validation';
+import AuthController from '../../controllers/AuthController';
+import { isEqual } from '../../Utils/IsEqual';
+import './signup.scss';
 
 class SignIn extends Block {
     constructor() {
         super('main');
     }
-    init(){
+    init() {
         this.getContent()?.setAttribute('class', 'login_signin');
     }
-    protected render(): DocumentFragment {
+    render(): DocumentFragment {
         this.children.input_email = new InputError({
             labelFor: 'email',
             labelText: 'Почта',
@@ -92,10 +96,42 @@ class SignIn extends Block {
         this.children.button = new Button({
             text: 'создать аккаунт',
             events: {
-                click: submit
+                click: onSubmit
             }
         });
-        return this.compile(template, this.props );
+        this.children.link = new Link({
+            text: 'есть аккаунт?',
+            to: '/',
+            className: 'link'
+        });
+        return this.compile(template, this.props);
     }
 }
+const onSubmit = (event: Event): void => {
+    event.preventDefault();
+    const children = document.querySelectorAll('input');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const data: any = {};
+    children.forEach((child: HTMLInputElement) => {
+        const error = child.parentElement?.querySelector('.red_error') as HTMLDivElement;
+        const input = checkRegExp(child.name, child.value);
+        if (child.value === '' || input) {
+            error.textContent = input;
+        } else {
+            error.textContent = '';
+            data[child.name] = child.value;
+        }
+    });
+
+    if (Object.keys(data).length === children.length) {
+        if (isEqual(data.password, data.password_again)) {
+            AuthController.signup(data);
+
+        } else {
+            const error = document.querySelectorAll('.red_error')[6] as HTMLDivElement;
+            error.textContent = 'Пароли не совпадают';
+        }
+        
+    }
+};
 export default SignIn;

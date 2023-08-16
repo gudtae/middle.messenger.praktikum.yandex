@@ -1,0 +1,52 @@
+@import '../../style/variables';
+
+.chat_overflow {
+    overflow: overlay;
+    height: 100%;
+}
+
+.chat_list::-webkit-scrollbar {
+    display: none;
+}
+
+.chat_list_li {
+    height: 60px;
+    box-shadow: $box-shadow;
+    display: grid;
+    grid-template-columns: 1fr 9fr 1fr;
+    align-items: center; 
+    cursor: pointer;
+    
+    img {
+        border-radius: 50%;
+    }
+}
+
+.chat_message_info {
+    padding-left: 10px;
+}
+
+.text_color_light {
+    color: $text-color;
+    font-size: 15px;
+}
+
+.chat_message_date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat_counter {
+    background-color: $links-color;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    width: 50%;
+    padding: 2px;
+    font-size: 1rem;
+}
+
+.select {
+    background-color: $select-color;
+}

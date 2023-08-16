@@ -1,14 +1,17 @@
-import Block from '../Utils/Block';
+import Block from '../../core/Block';
 import { template } from './inputError.tmlp';
+import './inputError.scss';
 
 interface InputProps {
     labelFor: string;
-    labelText?: string,
-    inputType: string;
     inputName: string;
+    inputType: string;
+    labelText?: string,
     error?: string,
     class?: string;
     placeholder?: string;
+    value?: string;
+    accept?: string;
     events?: { [key: string]: (...args: never) => void }
 }
 
