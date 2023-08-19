@@ -14,6 +14,10 @@
 * создание нового чата, добавление и удаление пользователя, удаление чата
 * обмен сообщениями
 
+Добавлено в рамках четвертого спринта:
+* тесты
+* что нибудь еще
+
 [Использованный шаблон](https://www.figma.com/file/5SdcaCVsZEull9iuLNMdxR/sprint-1?type=design&node-id=0%3A1&t=gijo5ZrRiazu7JcY-1)
 ## Установка
 -`npm run start` - сборка проекта и открытие на локальном хосте;
@@ -22,7 +26,9 @@
 
 -`npm run dev` - запуск проекта в режиме разработки;
 
--`npm run lint` - запуск линтера.
+-`npm run lint` - запуск линтера;
+
+-`npm run test` - запуск тестов.
 
 ## Готовая версия
 Выложена на [Netlify](https://messangerchat.netlify.app/)
@@ -33,3 +39,5 @@
 [Sprint 2](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/2#issue-1778638810) 
 
 [Sprint 3](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/3#issue-1848062740)
+
+Sprint 4 ссылку ожидаем
