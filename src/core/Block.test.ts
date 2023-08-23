@@ -3,7 +3,7 @@ import Block from './Block.ts';
 
 describe('Block', () => {
     it('Создание и инициализация', () => {
-        const block = new Block('div');
+        const block = new Block();
         expect(block).to.exist;
     });
 
