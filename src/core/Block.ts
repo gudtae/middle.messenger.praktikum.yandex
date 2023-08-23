@@ -3,9 +3,9 @@
 
 // ---------------------------------------------------------
 import Handlebars from 'handlebars';
-import { EventBus } from './EventBus';
+import { EventBus } from './EventBus.ts';
 import { nanoid } from 'nanoid';
-import { IBlock } from '../Utils/Interface';
+import { IBlock } from '../Utils/Interface.ts';
 
 
 enum EVENTS {

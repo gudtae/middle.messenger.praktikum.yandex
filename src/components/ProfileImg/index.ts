@@ -1,5 +1,5 @@
-import template from './img.tmpl';
-import Block from '../../core/Block';
+import template from './img.tmpl.ts';
+import Block from '../../core/Block.ts';
 
 interface ProfileImgProps {
     path: string;

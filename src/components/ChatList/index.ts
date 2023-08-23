@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import Block from '../../core/Block';
-import { template } from './chatList.tmpl';
-import store, { IState, withStore } from '../../core/Store';
-import ChatController from '../../controllers/ChatController';
+import Block from '../../core/Block.ts';
+import { template } from './chatList.tmpl.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import ChatController from '../../controllers/ChatController.ts';
 import './chatList.scss';
-import controller from '../../core/Socket';
+import controller from '../../core/Socket.ts';
 
 class ChatListBase extends Block {
     constructor(props = {}) {

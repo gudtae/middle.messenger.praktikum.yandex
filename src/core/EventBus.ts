@@ -1,4 +1,4 @@
-import { ObjectType } from './Block';
+import { ObjectType } from './Block.ts';
 
 type EventList = Record<string | number | symbol, ObjectType[]>;
 

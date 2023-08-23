@@ -1,5 +1,5 @@
-import { BaseAPI } from './BaseAPI';
-import { IResponse } from './UserAPI';
+import { BaseAPI } from './BaseAPI.ts';
+import { IResponse } from './UserAPI.ts';
 
 export interface IChatList {
         id: number,

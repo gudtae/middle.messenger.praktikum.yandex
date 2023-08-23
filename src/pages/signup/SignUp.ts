@@ -1,11 +1,11 @@
-import template from './signup.tmpl';
-import Block from '../../core/Block';
-import { InputError } from '../../components/InputError/index';
-import { Button } from '../../components/Button/index';
-import { Link } from '../../components/Link/index';
-import { checkRegExp, focusin, focusout} from '../../core/Validation';
-import AuthController from '../../controllers/AuthController';
-import { isEqual } from '../../Utils/IsEqual';
+import template from './signup.tmpl.ts';
+import Block from '../../core/Block.ts';
+import { InputError } from '../../components/InputError/index.ts';
+import { Button } from '../../components/Button/index.ts';
+import { Link } from '../../components/Link/index.ts';
+import { checkRegExp, focusin, focusout} from '../../core/Validation.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import { isEqual } from '../../Utils/IsEqual.ts';
 import './signup.scss';
 
 class SignIn extends Block {

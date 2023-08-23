@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Block from '../../core/Block';
-import template from './modal.tmpl';
-import { Button } from '../Button';
-import { InputError } from '../InputError';
-import { ERROR_MESSAGES, focusout } from '../../core/Validation';
-import store, { IState, withStore } from '../../core/Store';
-import UserController from '../../controllers/UserController';
+import Block from '../../core/Block.ts';
+import template from './modal.tmpl.ts';
+import { Button } from '../Button/index.ts';
+import { InputError } from '../InputError/index.ts';
+import { ERROR_MESSAGES, focusout } from '../../core/Validation.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import UserController from '../../controllers/UserController.ts';
 import './modalAdd.scss';
-import ChatController from '../../controllers/ChatController';
+import ChatController from '../../controllers/ChatController.ts';
 
 class ModalAddUserBase extends Block {
     constructor(props = {}) {

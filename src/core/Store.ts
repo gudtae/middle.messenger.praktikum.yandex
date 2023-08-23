@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { IUser } from '../api/AuthAPI';
-import Set from '../Utils/Set';
-import { EventBus } from './EventBus';
-import Block from './Block';
-import { IChatList } from '../api/ChatAPI';
-import { IResponse } from '../api/UserAPI';
-import { IChatMessage } from './Socket';
+import { IUser } from '../api/AuthAPI.ts';
+import Set from '../Utils/Set.ts';
+import { EventBus } from './EventBus.ts';
+import Block from './Block.ts';
+import { IChatList } from '../api/ChatAPI.ts';
+import { IResponse } from '../api/UserAPI.ts';
+import { IChatMessage } from './Socket.ts';
 
 export interface IState {
     user?: IUser,

@@ -1,5 +1,5 @@
-import Block from '../core/Block';
-import router from '../core/Router';
+import Block from '../core/Block.ts';
+import router from '../core/Router.ts';
 
 export function withRouter(Component: typeof Block) {
 

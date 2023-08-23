@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Block from '../../core/Block';
-import template from './modal.tmpl';
-import { Button } from '../Button';
-import store, { IState, withStore } from '../../core/Store';
-import ChatController from '../../controllers/ChatController';
+import Block from '../../core/Block.ts';
+import template from './modal.tmpl.ts';
+import { Button } from '../Button/index.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import ChatController from '../../controllers/ChatController.ts';
 
 class ModalDelUserBase extends Block {
     constructor(props = {}) {

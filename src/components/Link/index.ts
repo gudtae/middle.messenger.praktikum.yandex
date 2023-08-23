@@ -1,6 +1,6 @@
-import Block from '../../core/Block';
-import template from './link.tmpl';
-import router from '../../core/Router';
+import Block from '../../core/Block.ts';
+import template from './link.tmpl.ts';
+import router from '../../core/Router.ts';
 
 interface LinkProps {
     text: string;

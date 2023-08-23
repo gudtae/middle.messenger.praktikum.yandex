@@ -1,4 +1,4 @@
-import { HTTPTransport } from '../core/HTTP';
+import { HTTPTransport } from '../core/HTTP.ts';
 
 export abstract class BaseAPI {
     protected http: HTTPTransport;

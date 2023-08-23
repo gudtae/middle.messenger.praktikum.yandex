@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import ChatController from '../controllers/ChatController';
-import store from './Store';
+import ChatController from '../controllers/ChatController.ts';
+import store from './Store.ts';
 export interface IChatMessage {
     chat_id: number;
     content: string;
@@ -15,7 +15,7 @@ export interface IChatMessage {
 
 class WSTransport {
     private socket: WebSocket | null = null;
-    private pingInterval = 0;
+    private pingInterval: NodeJS.Timeout | number = 0;
     addEventListener() {
         this.socket?.addEventListener('open', this.open.bind(this));
         this.socket?.addEventListener('close', this.close.bind(this));

@@ -1,10 +1,10 @@
-import Block from '../../core/Block';
-import template from './modal.tmpl';
+import Block from '../../core/Block.ts';
+import template from './modal.tmpl.ts';
 import './modal.scss';
-import { Button } from '../Button';
-import { InputError } from '../InputError';
-import { ERROR_MESSAGES, focusout } from '../../core/Validation';
-import ChatController from '../../controllers/ChatController';
+import { Button } from '../Button/index.ts';
+import { InputError } from '../InputError/index.ts';
+import { ERROR_MESSAGES, focusout } from '../../core/Validation.ts';
+import ChatController from '../../controllers/ChatController.ts';
 
 class Modal extends Block {
     constructor() {
