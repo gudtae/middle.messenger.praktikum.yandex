@@ -4,7 +4,7 @@ enum METHODS {
     POST = 'POST',
     DELETE = 'DELETE'
 }
-function queryStringify(data: Record<string, string>) {
+export function queryStringify(data: Record<string, unknown>) {
     if (!data) {
         throw new Error('Должна быть data');
     }
@@ -29,7 +29,7 @@ export class HTTPTransport {
         this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
     }
 
-    public get<Response>(path = '/', data: Record<string, string> = {}): Promise<Response> {
+    public get<Response>(path = '/', data: Record<string, unknown> = {}): Promise<Response> {
         let url = this.endpoint + path;
         if (data) {
             url += queryStringify(data);
