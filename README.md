@@ -15,8 +15,8 @@
 * обмен сообщениями
 
 Добавлено в рамках четвертого спринта:
-* тесты
-* что нибудь еще
+* написаны тесты для роутера, блока и модуль отправки запросов;
+* добавлен Husky, настроен pre-commit с запуском тестов и линтера.
 
 [Использованный шаблон](https://www.figma.com/file/5SdcaCVsZEull9iuLNMdxR/sprint-1?type=design&node-id=0%3A1&t=gijo5ZrRiazu7JcY-1)
 ## Установка
@@ -40,4 +40,6 @@
 
 [Sprint 3](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/3#issue-1848062740)
 
-Sprint 4 ссылку ожидаем
+[Sprint 4](https://github.com/gudtae/middle.messenger.praktikum.yandex/pull/4#issue-1863524915)
+
+

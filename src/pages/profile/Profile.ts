@@ -55,7 +55,6 @@ class ProfileBase extends Block {
         return this.compile(template, this.props);
     }
 }
-//https://ya-praktikum.tech/api/v2/resources${res.avatar}
 function mapStateToProps(state: IState) {
     return { ...state.user };
 }
