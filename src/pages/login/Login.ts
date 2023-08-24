@@ -1,10 +1,10 @@
-import template from './login.tmpl';
-import Block from '../../core/Block';
-import { InputError } from '../../components/InputError/index';
-import { Button } from '../../components/Button/index';
-import { Link } from '../../components/Link';
-import { focusin, focusout, checkRegExp } from '../../core/Validation';
-import AuthController from '../../controllers/AuthController';
+import template from './login.tmpl.ts';
+import Block from '../../core/Block.ts';
+import { InputError } from '../../components/InputError/index.ts';
+import { Button } from '../../components/Button/index.ts';
+import { Link } from '../../components/Link/index.ts';
+import { focusin, focusout, checkRegExp } from '../../core/Validation.ts';
+import AuthController from '../../controllers/AuthController.ts';
 import './login.scss';
 
 class Login extends Block {

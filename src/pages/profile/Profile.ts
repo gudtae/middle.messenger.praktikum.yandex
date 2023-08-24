@@ -1,10 +1,10 @@
-import template from './profile.tmpl';
-import Block from '../../core/Block';
-import { Link } from '../../components/Link';
-import { Button } from '../../components/Button';
-import AuthController from '../../controllers/AuthController';
-import store, { IState, withStore } from '../../core/Store';
-import { ProfileImg } from '../../components/ProfileImg';
+import template from './profile.tmpl.ts';
+import Block from '../../core/Block.ts';
+import { Link } from '../../components/Link/index.ts';
+import { Button } from '../../components/Button/index.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import { ProfileImg } from '../../components/ProfileImg/index.ts';
 import profileIcon from '../../icon/profileIcon.svg';
 import './profile.scss';
 
@@ -55,7 +55,6 @@ class ProfileBase extends Block {
         return this.compile(template, this.props);
     }
 }
-//https://ya-praktikum.tech/api/v2/resources${res.avatar}
 function mapStateToProps(state: IState) {
     return { ...state.user };
 }

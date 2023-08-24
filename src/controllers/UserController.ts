@@ -1,7 +1,7 @@
-import { IGet, IPassword, IProfile, UserAPI } from '../api/UserAPI';
-import Router from '../core/Router';
-import store from '../core/Store';
-import AuthController from './AuthController';
+import { IGet, IPassword, IProfile, UserAPI } from '../api/UserAPI.ts';
+import Router from '../core/Router.ts';
+import store from '../core/Store.ts';
+import AuthController from './AuthController.ts';
 
 
 class UserController {

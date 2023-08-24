@@ -1,15 +1,15 @@
-import template from './chat.tmpl';
-import Block from '../../core/Block';
-import { IState, withStore } from '../../core/Store';
-import { InputError } from '../InputError';
-import { Buttonimg } from '../ButtonImg';
-import { ERROR_MESSAGES } from '../../core/Validation';
+import template from './chat.tmpl.ts';
+import Block from '../../core/Block.ts';
+import { IState, withStore } from '../../core/Store.ts';
+import { InputError } from '../InputError/index.ts';
+import { Buttonimg } from '../ButtonImg/index.ts';
+import { ERROR_MESSAGES } from '../../core/Validation.ts';
 import './chatmsg.scss';
-import { Button } from '../Button';
-import modalDelete from '../ModalDelete';
-import ModalAddUser from '../ModalAddUser';
-import ModalDelUser from '../ModalDelUser';
-import controller from '../../core/Socket';
+import { Button } from '../Button/index.ts';
+import modalDelete from '../ModalDelete/index.ts';
+import ModalAddUser from '../ModalAddUser/index.ts';
+import ModalDelUser from '../ModalDelUser/index.ts';
+import controller from '../../core/Socket.ts';
 
 class ChatMessageBase extends Block {
     constructor(props = {}) {

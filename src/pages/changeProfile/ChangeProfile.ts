@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import template from './changeProfile.tmpl';
-import Block from '../../core/Block';
+import template from './changeProfile.tmpl.ts';
+import Block from '../../core/Block.ts';
 import { ProfileImg } from '../../components/ProfileImg';
 import profileIcon from '../../icon/profileIcon.svg';
-import { InputError } from '../../components/InputError/index';
-import { Button } from '../../components/Button';
-import { Link } from '../../components/Link';
-import { checkRegExp, focusin, focusout } from '../../core/Validation';
-import AuthController from '../../controllers/AuthController';
-import UserController from '../../controllers/UserController';
-import store, { IState, withStore } from '../../core/Store';
-import Router from '../../core/Router';
+import { InputError } from '../../components/InputError/index.ts';
+import { Button } from '../../components/Button/index.ts';
+import { Link } from '../../components/Link/index.ts';
+import { checkRegExp, focusin, focusout } from '../../core/Validation.ts';
+import AuthController from '../../controllers/AuthController.ts';
+import UserController from '../../controllers/UserController.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import Router from '../../core/Router.ts';
 import './changeProfile.scss';
 
 class ChangeProfileBase extends Block {

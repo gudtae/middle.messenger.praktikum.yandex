@@ -1,5 +1,5 @@
-import { BaseAPI } from './BaseAPI';
-import { IUser } from './AuthAPI';
+import { BaseAPI } from './BaseAPI.ts';
+import { IUser } from './AuthAPI.ts';
 
 export interface IProfile {
     first_name: string,

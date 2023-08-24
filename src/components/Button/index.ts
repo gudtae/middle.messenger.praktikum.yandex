@@ -1,5 +1,5 @@
-import Block from '../../core/Block';
-import { template } from './button.tmpl';
+import Block from '../../core/Block.ts';
+import { template } from './button.tmpl.ts';
 
 interface ButtonProps {
     text: string,

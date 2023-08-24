@@ -1,6 +1,6 @@
-import { Link } from '../../components/Link';
-import Block from '../../core/Block';
-import template from './500.tmpl';
+import { Link } from '../../components/Link/index.ts';
+import Block from '../../core/Block.ts';
+import template from './500.tmpl.ts';
 
 class Error500 extends Block {
     constructor(){

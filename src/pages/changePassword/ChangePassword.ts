@@ -1,12 +1,12 @@
-import template from './changePassword.tmpl';
-import Block from '../../core/Block';
-import { InputError } from '../../components/InputError/index';
-import { Button } from '../../components/Button';
-import { checkRegExp, focusin, focusout } from '../../core/Validation';
-import { Link } from '../../components/Link';
-import store, { IState, withStore } from '../../core/Store';
-import UserController from '../../controllers/UserController';
-import { isEqual } from '../../Utils/IsEqual';
+import template from './changePassword.tmpl.ts';
+import Block from '../../core/Block.ts';
+import { InputError } from '../../components/InputError/index.ts';
+import { Button } from '../../components/Button/index.ts';
+import { checkRegExp, focusin, focusout } from '../../core/Validation.ts';
+import { Link } from '../../components/Link/index.ts';
+import store, { IState, withStore } from '../../core/Store.ts';
+import UserController from '../../controllers/UserController.ts';
+import { isEqual } from '../../Utils/IsEqual.ts';
 import profileIcon from '../../icon/profileIcon.svg';
 import { ProfileImg } from '../../components/ProfileImg';
 

@@ -1,9 +1,9 @@
-import Block from '../../core/Block';
-import { Button } from '../Button';
-import template from './modalDelete.tmpl';
+import Block from '../../core/Block.ts';
+import { Button } from '../Button/index.ts';
+import template from './modalDelete.tmpl.ts';
 import './modalDelete.scss';
-import ChatController from '../../controllers/ChatController';
-import store from '../../core/Store';
+import ChatController from '../../controllers/ChatController.ts';
+import store from '../../core/Store.ts';
 
 class modalDelete extends Block {
     constructor() {

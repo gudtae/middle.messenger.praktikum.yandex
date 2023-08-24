@@ -1,12 +1,12 @@
-import template from './chat.tmpl';
-import Block from '../../core/Block';
-import ChatList from '../../components/ChatList';
-import { Link } from '../../components/Link';
-import { IState, withStore } from '../../core/Store';
-import { Button } from '../../components/Button';
+import template from './chat.tmpl.ts';
+import Block from '../../core/Block.ts';
+import ChatList from '../../components/ChatList/index.ts';
+import { Link } from '../../components/Link/index.ts';
+import { IState, withStore } from '../../core/Store.ts';
+import { Button } from '../../components/Button/index.ts';
 import './chat.scss'; 
-import Modal from '../../components/Modal';
-import ChatMessage from '../../components/ChatMessage';
+import Modal from '../../components/Modal/index.ts';
+import ChatMessage from '../../components/ChatMessage/index.ts';
 
 class ChatBase extends Block {
     constructor(props = {}) {

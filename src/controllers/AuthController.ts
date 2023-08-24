@@ -1,6 +1,6 @@
-import { AuthAPI, ISignInData, ISignUpData } from '../api/AuthAPI';
-import Router from '../core/Router';
-import store from '../core/Store';
+import { AuthAPI, ISignInData, ISignUpData } from '../api/AuthAPI.ts';
+import Router from '../core/Router.ts';
+import store from '../core/Store.ts';
 
 class AuthController {
     private api = new AuthAPI();

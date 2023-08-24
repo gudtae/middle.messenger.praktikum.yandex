@@ -1,7 +1,7 @@
-import { ChatAPI, IChatList } from '../api/ChatAPI';
-import { IResponse } from '../api/UserAPI';
-import store from '../core/Store';
-import controller from '../core/Socket';
+import { ChatAPI, IChatList } from '../api/ChatAPI.ts';
+import { IResponse } from '../api/UserAPI.ts';
+import store from '../core/Store.ts';
+import controller from '../core/Socket.ts';
 
 class ChatController {
     private api = new ChatAPI();

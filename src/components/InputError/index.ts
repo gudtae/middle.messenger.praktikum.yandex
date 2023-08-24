@@ -1,5 +1,5 @@
-import Block from '../../core/Block';
-import { template } from './inputError.tmlp';
+import Block from '../../core/Block.ts';
+import { template } from './inputError.tmlp.ts';
 import './inputError.scss';
 
 interface InputProps {

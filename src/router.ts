@@ -1,13 +1,13 @@
-import router from './core/Router';
-import ChangePassword from './pages/changePassword/ChangePassword';
-import ChangeProfile from './pages/changeProfile/ChangeProfile';
-import Chat from './pages/chat/Chat';
-import Login from './pages/login/Login';
-import Profile from './pages/profile/Profile';
-import SignUp from './pages/signup/SignUp';
-import Error500 from './pages/500/Error500';
-import Error404 from './pages/404/Error404';
-import AuthController from './controllers/AuthController';
+import router from './core/Router.ts';
+import ChangePassword from './pages/changePassword/ChangePassword.ts';
+import ChangeProfile from './pages/changeProfile/ChangeProfile.ts';
+import Chat from './pages/chat/Chat.ts';
+import Login from './pages/login/Login.ts';
+import Profile from './pages/profile/Profile.ts';
+import SignUp from './pages/signup/SignUp.ts';
+import Error500 from './pages/500/Error500.ts';
+import Error404 from './pages/404/Error404.ts';
+import AuthController from './controllers/AuthController.ts';
 
 
 enum ROUTER {
